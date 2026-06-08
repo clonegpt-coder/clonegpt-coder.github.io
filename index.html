@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CloneGPT ULTIMATE | Master Web Development</title>
+    <title>CLONEGPT ULTIMATE | Master Web Development</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -75,6 +75,8 @@
         .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 2.5rem; }
         .card { background: rgba(20, 20, 35, 0.4); backdrop-filter: blur(25px); border: 1.5px solid rgba(139, 92, 246, 0.12); border-radius: 2.5rem; overflow: hidden; transition: all 0.4s; cursor: pointer; position: relative; }
         .card:hover { transform: translateY(-10px) scale(1.01); border-color: rgba(139, 92, 246, 0.4); box-shadow: 0 40px 60px rgba(0,0,0,0.4); }
+        .new-badge { position: absolute; top: 1.8rem; left: 1.8rem; background: linear-gradient(135deg, #10b981, #34d399); color: white; padding: 0.45rem 1.3rem; border-radius: 50px; font-size: 0.8rem; font-weight: 800; z-index: 10; letter-spacing: 1.5px; }
+        .coming-soon-badge { position: absolute; top: 1.8rem; right: 1.8rem; background: linear-gradient(135deg, #f59e0b, #ef4444); color: white; padding: 0.45rem 1.3rem; border-radius: 50px; font-size: 0.8rem; font-weight: 700; z-index: 10; letter-spacing: 1.5px; }
         .card-icon { height: 180px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(216, 70, 239, 0.15)); font-size: 4.5rem; }
         .card-content { padding: 2.2rem; }
         .card-content h3 { font-size: 1.7rem; margin-bottom: 0.9rem; font-weight: 700; }
@@ -82,58 +84,108 @@
         .card-tag { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.45rem 1.3rem; background: rgba(139, 92, 246, 0.08); border-radius: 50px; font-size: 0.8rem; color: #c7d2fe; border: 1px solid rgba(139, 92, 246, 0.15); font-weight: 600; }
         .card.disabled { opacity: 0.5; cursor: not-allowed; }
         
-        .lesson-container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        .back-to-dashboard { background: rgba(139, 92, 246, 0.05); border: 1.5px solid rgba(139, 92, 246, 0.15); color: #c7d2fe; padding: 0.9rem 2rem; border-radius: 60px; cursor: pointer; margin-bottom: 2.5rem; display: inline-flex; align-items: center; gap: 0.8rem; }
+        .lesson-container { max-width: 1200px; margin: 0 auto; padding: 2rem; animation: slideIn 0.5s ease; }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+        .back-to-dashboard { background: rgba(139, 92, 246, 0.05); border: 1.5px solid rgba(139, 92, 246, 0.15); color: #c7d2fe; padding: 0.9rem 2rem; border-radius: 60px; cursor: pointer; margin-bottom: 2.5rem; display: inline-flex; align-items: center; gap: 0.8rem; font-weight: 600; transition: all 0.3s; }
+        .back-to-dashboard:hover { background: rgba(139, 92, 246, 0.1); color: white; transform: translateX(-6px); }
         .lesson-header { margin-bottom: 2.5rem; }
         .lesson-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; flex-wrap: wrap; gap: 1rem; }
         .lesson-progress { color: #c7d2fe; font-size: 1.3rem; font-weight: 600; display: flex; align-items: center; gap: 0.7rem; }
+        .lesson-time { color: #a1a1aa; font-size: 0.95rem; display: flex; align-items: center; gap: 0.6rem; background: rgba(139, 92, 246, 0.05); padding: 0.5rem 1.2rem; border-radius: 50px; }
         .progress-bar { width: 100%; height: 8px; background: rgba(139, 92, 246, 0.08); border-radius: 20px; overflow: hidden; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, #6366f1, #8b5cf6, #d946ef); border-radius: 20px; transition: width 0.5s; }
-        .lesson-content { background: rgba(20, 20, 35, 0.4); backdrop-filter: blur(30px); border: 1.5px solid rgba(139, 92, 246, 0.12); border-radius: 3rem; padding: 3.5rem; margin-bottom: 2.5rem; min-height: 550px; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #6366f1, #8b5cf6, #d946ef); background-size: 200% 200%; border-radius: 20px; transition: width 0.5s; box-shadow: 0 0 20px rgba(139, 92, 246, 0.4); }
+        .lesson-content { background: rgba(20, 20, 35, 0.4); backdrop-filter: blur(30px); border: 1.5px solid rgba(139, 92, 246, 0.12); border-radius: 3rem; padding: 3.5rem; margin-bottom: 2.5rem; min-height: 550px; box-shadow: 0 40px 80px rgba(0,0,0,0.4); }
         .lesson-text { font-size: 1.2rem; line-height: 2; color: #e2e8f0; }
+        .lesson-text h2 { color: #fff; margin-bottom: 2rem; font-size: 2.8rem; font-weight: 700; background: linear-gradient(135deg, #fff, #c7d2fe); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .lesson-text pre { background: rgba(0, 0, 0, 0.5); padding: 2rem; border-radius: 1.8rem; overflow-x: auto; border: 1px solid rgba(139, 92, 246, 0.15); margin: 2.2rem 0; }
+        .lesson-text code { color: #f0abfc; font-family: 'Courier New', monospace; font-size: 1rem; }
+        .tip-box { background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(216, 70, 239, 0.1)); border-left: 5px solid #8b5cf6; padding: 1.8rem; border-radius: 1.2rem; margin: 2.5rem 0; }
         .lesson-navigation { display: flex; justify-content: space-between; align-items: center; margin-top: 2.5rem; flex-wrap: wrap; gap: 1rem; }
-        .nav-btn { background: rgba(139, 92, 246, 0.05); border: 1.5px solid rgba(139, 92, 246, 0.15); color: white; padding: 1.1rem 2.8rem; border-radius: 60px; cursor: pointer; font-size: 1.05rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.9rem; }
+        .nav-btn { background: rgba(139, 92, 246, 0.05); border: 1.5px solid rgba(139, 92, 246, 0.15); color: white; padding: 1.1rem 2.8rem; border-radius: 60px; cursor: pointer; font-size: 1.05rem; font-weight: 600; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.9rem; }
+        .nav-btn:hover:not(:disabled) { background: rgba(139, 92, 246, 0.12); transform: translateX(-5px); }
         .nav-btn.primary { background: linear-gradient(135deg, #6366f1, #8b5cf6); box-shadow: 0 15px 40px rgba(99, 102, 241, 0.35); }
+        .nav-btn.primary:hover:not(:disabled) { transform: translateX(5px); box-shadow: 0 25px 60px rgba(139, 92, 246, 0.5); }
         .nav-btn:disabled { opacity: 0.25; cursor: not-allowed; }
         
-        .compiler-container { background: rgba(20, 20, 35, 0.4); backdrop-filter: blur(30px); border: 1.5px solid rgba(139, 92, 246, 0.12); border-radius: 3rem; overflow: hidden; }
+        .compiler-container { background: rgba(20, 20, 35, 0.4); backdrop-filter: blur(30px); border: 1.5px solid rgba(139, 92, 246, 0.12); border-radius: 3rem; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.4); }
         .compiler-tabs { display: flex; background: rgba(0, 0, 0, 0.3); border-bottom: 1.5px solid rgba(139, 92, 246, 0.15); padding: 1.2rem; gap: 1rem; flex-wrap: wrap; }
-        .compiler-tab { padding: 0.9rem 2rem; background: transparent; border: none; color: #a1a1aa; cursor: pointer; border-radius: 1.2rem; font-size: 1rem; font-weight: 600; }
-        .compiler-tab.active { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; }
+        .compiler-tab { padding: 0.9rem 2rem; background: transparent; border: none; color: #a1a1aa; cursor: pointer; border-radius: 1.2rem; font-size: 1rem; font-weight: 600; transition: all 0.3s; }
+        .compiler-tab:hover { color: #e2e8f0; background: rgba(139, 92, 246, 0.08); }
+        .compiler-tab.active { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; box-shadow: 0 10px 30px rgba(99, 102, 241, 0.35); }
         .compiler-panel { display: none; }
         .compiler-panel.active { display: block; }
         .code-textarea { width: 100%; min-height: 380px; background: rgba(0, 0, 0, 0.5); border: none; padding: 2rem; color: #e2e8f0; font-family: 'Courier New', monospace; font-size: 1rem; line-height: 1.8; resize: vertical; }
-        .run-button { background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; padding: 1.1rem 2.8rem; border-radius: 1.5rem; cursor: pointer; font-weight: 700; margin: 2rem; display: inline-flex; align-items: center; gap: 1rem; }
+        .code-textarea:focus { outline: none; background: rgba(0, 0, 0, 0.6); }
+        .run-button { background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; padding: 1.1rem 2.8rem; border-radius: 1.5rem; cursor: pointer; font-weight: 700; margin: 2rem; display: inline-flex; align-items: center; gap: 1rem; transition: all 0.3s; box-shadow: 0 15px 40px rgba(16, 185, 129, 0.35); text-transform: uppercase; letter-spacing: 1.5px; }
+        .run-button:hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 30px 70px rgba(16, 185, 129, 0.5); }
         .preview-frame { width: 100%; height: 550px; border: none; background: white; border-radius: 1.8rem; }
         
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(40px); z-index: 1000; align-items: center; justify-content: center; }
-        .modal.active { display: flex; }
-        .modal-window { background: rgba(20, 20, 35, 0.8); backdrop-filter: blur(40px); border-radius: 3.5rem; width: 90%; max-width: 1000px; max-height: 90vh; overflow: hidden; border: 1.5px solid rgba(139, 92, 246, 0.25); }
+        .modal.active { display: flex; animation: modalFade 0.3s ease; }
+        @keyframes modalFade { from { opacity: 0; } to { opacity: 1; } }
+        .modal-window { background: rgba(20, 20, 35, 0.8); backdrop-filter: blur(40px); border-radius: 3.5rem; width: 90%; max-width: 1000px; max-height: 90vh; overflow: hidden; border: 1.5px solid rgba(139, 92, 246, 0.25); box-shadow: 0 60px 120px rgba(0,0,0,0.8); }
         .modal-header { padding: 2rem 3rem; background: rgba(0, 0, 0, 0.3); border-bottom: 1.5px solid rgba(139, 92, 246, 0.15); display: flex; justify-content: space-between; align-items: center; }
-        .modal-close { background: rgba(139, 92, 246, 0.08); border: 1.5px solid rgba(139, 92, 246, 0.15); color: #a1a1aa; font-size: 1.6rem; cursor: pointer; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
-        .modal-body { padding: 3rem; max-height: 70vh; overflow-y: auto; text-align: center; }
-        .modal-actions { display: flex; gap: 1.5rem; margin-bottom: 2.5rem; justify-content: center; }
-        .modal-btn { padding: 1rem 2.5rem; border-radius: 60px; border: none; cursor: pointer; font-weight: 700; display: inline-flex; align-items: center; gap: 0.9rem; }
-        .modal-btn-download { background: linear-gradient(135deg, #10b981, #059669); color: white; }
+        .modal-header h3 { font-size: 1.6rem; font-weight: 700; }
+        .modal-close { background: rgba(139, 92, 246, 0.08); border: 1.5px solid rgba(139, 92, 246, 0.15); color: #a1a1aa; font-size: 1.6rem; cursor: pointer; transition: all 0.3s; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+        .modal-close:hover { color: #fff; background: rgba(239, 68, 68, 0.15); border-color: #ef4444; transform: rotate(90deg); }
+        .modal-body { padding: 3rem; max-height: 70vh; overflow-y: auto; }
+        .modal-actions { display: flex; gap: 1.5rem; margin-bottom: 2.5rem; flex-wrap: wrap; justify-content: center; }
+        .modal-btn { padding: 1rem 2.5rem; border-radius: 60px; border: none; cursor: pointer; font-weight: 700; display: inline-flex; align-items: center; gap: 0.9rem; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .modal-btn-download { background: linear-gradient(135deg, #10b981, #059669); color: white; box-shadow: 0 15px 40px rgba(16, 185, 129, 0.3); }
+        .modal-btn-print { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; }
         
-        .certificate-img { max-width: 100%; height: auto; border-radius: 10px; }
+        /* CERTIFICATE DISPLAY - YOUR IMAGE WILL SHOW HERE */
+        .certificate-img { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         
         .certificate-list { display: flex; flex-direction: column; gap: 20px; }
-        .certificate-card-item { background: rgba(20, 20, 35, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 20px; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
-        .certificate-card-item .info h4 { color: white; margin-bottom: 5px; }
+        .certificate-card-item { background: rgba(20, 20, 35, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 20px; padding: 20px; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s; }
+        .certificate-card-item:hover { transform: translateX(5px); border-color: #ffd700; }
+        .certificate-card-item .info h4 { color: white; margin-bottom: 5px; font-size: 18px; }
         .certificate-card-item .info h4 i { color: #ffd700; margin-right: 10px; }
         .certificate-card-item .info p { color: #a1a1aa; font-size: 14px; }
-        .view-cert-btn { background: linear-gradient(135deg, #ffd700, #ffb347); color: #1a1a2e; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-weight: 700; }
-        .empty-certificates { text-align: center; padding: 80px 40px; background: rgba(20, 20, 35, 0.3); border-radius: 30px; }
+        .view-cert-btn { background: linear-gradient(135deg, #ffd700, #ffb347); color: #1a1a2e; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-weight: 700; transition: all 0.3s; }
+        .view-cert-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255, 215, 0, 0.4); }
+        .empty-certificates { text-align: center; padding: 80px 40px; color: #a1a1aa; background: rgba(20, 20, 35, 0.3); border-radius: 30px; }
         .empty-certificates i { font-size: 80px; margin-bottom: 20px; color: #6366f1; }
         .empty-certificates h3 { font-size: 32px; margin-bottom: 15px; color: #c7d2fe; }
+        .empty-certificates p { font-size: 18px; }
+        
+        .coming-soon-modal .modal-window { max-width: 600px; }
+        .coming-soon-icon { font-size: 7rem; margin-bottom: 2.5rem; animation: iconFloat 4s ease-in-out infinite; }
+        @keyframes iconFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        .coming-soon-title { font-size: 3rem; margin-bottom: 1.5rem; background: linear-gradient(135deg, #c7d2fe, #f0abfc); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 800; }
+        .coming-soon-text { color: #a1a1aa; margin-bottom: 3rem; line-height: 1.9; font-size: 1.2rem; }
+        .coming-soon-progress { width: 100%; height: 12px; background: rgba(139, 92, 246, 0.08); border-radius: 20px; overflow: hidden; margin: 3rem 0; }
+        .coming-soon-progress-bar { width: 70%; height: 100%; background: linear-gradient(90deg, #6366f1, #8b5cf6, #d946ef); border-radius: 20px; }
+        .notify-btn { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; border: none; padding: 1.4rem 3.5rem; border-radius: 60px; cursor: pointer; font-weight: 700; transition: all 0.3s; box-shadow: 0 20px 50px rgba(99, 102, 241, 0.35); text-transform: uppercase; letter-spacing: 1.5px; }
+        .notify-btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 35px 80px rgba(139, 92, 246, 0.5); }
+        
+        .email-section { padding: 3rem; max-width: 600px; margin: 0 auto; }
+        .email-card { background: rgba(20, 20, 35, 0.4); backdrop-filter: blur(30px); border: 1.5px solid rgba(139, 92, 246, 0.12); border-radius: 2.5rem; padding: 2.5rem; box-shadow: 0 30px 60px rgba(0,0,0,0.3); text-align: center; }
+        .email-icon { font-size: 4rem; margin-bottom: 1.5rem; color: #a78bfa; }
+        .email-card h2 { font-size: 2.2rem; margin-bottom: 1rem; background: linear-gradient(135deg, #fff, #c7d2fe); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .email-card p { color: #a1a1aa; margin-bottom: 2rem; line-height: 1.6; }
+        .email-input-wrapper { position: relative; margin-bottom: 1.5rem; }
+        .email-input-wrapper i { position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); color: #8b5cf6; font-size: 1.2rem; }
+        .email-input-wrapper input { width: 100%; padding: 1rem 1rem 1rem 3rem; background: rgba(255, 255, 255, 0.05); border: 1.5px solid rgba(139, 92, 246, 0.3); border-radius: 1rem; color: white; font-size: 1rem; transition: all 0.3s; }
+        .email-input-wrapper input:focus { outline: none; border-color: #8b5cf6; background: rgba(255, 255, 255, 0.08); }
+        .email-action-buttons { display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; }
+        .email-done-btn { background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; padding: 0.8rem 2rem; border-radius: 50px; cursor: pointer; font-weight: 600; display: inline-flex; align-items: center; gap: 0.7rem; transition: all 0.3s; }
+        .email-done-btn:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(16, 185, 129, 0.4); }
+        .email-skip-btn { background: rgba(255, 255, 255, 0.03); border: 1.5px solid rgba(239, 68, 68, 0.3); color: #fca5a5; padding: 0.8rem 2rem; border-radius: 50px; cursor: pointer; font-weight: 600; display: inline-flex; align-items: center; gap: 0.7rem; transition: all 0.3s; }
+        .email-skip-btn:hover { background: rgba(239, 68, 68, 0.1); border-color: #ef4444; transform: translateY(-2px); }
         
         @media (max-width: 768px) {
             .hero-title { font-size: 2.5rem; }
+            .stats-row { gap: 2rem; }
+            .stat:not(:first-child)::before { display: none; }
             .cards-grid { grid-template-columns: 1fr; }
             .navbar { padding: 1rem 1.5rem; }
             .tabs-wrapper { padding: 1.2rem 1.5rem 0 1.5rem; }
             .content-area { padding: 1.5rem; }
+            .lesson-content { padding: 1.5rem; }
+            .hero-btn { padding: 1rem 2rem; font-size: 1rem; }
+            .login-container { padding: 2rem; margin: 1rem; }
             .certificate-card-item { flex-direction: column; text-align: center; gap: 15px; }
         }
     </style>
@@ -150,13 +202,14 @@
 <div id="certificateViewModal" class="modal">
     <div class="modal-window">
         <div class="modal-header">
-            <h3><i class="fas fa-certificate"></i> 🎓 CloneGPT Certificate of Excellence</h3>
+            <h3><i class="fas fa-certificate"></i> 🎓 Your Certificate</h3>
             <button class="modal-close" onclick="closeCertificateViewModal()"><i class="fas fa-times"></i></button>
         </div>
         <div class="modal-body">
-            <div id="certificateDisplay" class="certificate-display"></div>
+            <!-- ✅ YAHAN AAPKI IMAGE SHOW HOGI (JO REPO MEIN HAI) ✅ -->
+            <img id="certificateImage" class="certificate-img" src="ChatGPT Image Jun 8, 2026, 02_50_02 AM.png" alt="Certificate">
             <div class="modal-actions">
-                <button class="modal-btn modal-btn-download" onclick="downloadCertificateAsHTML()"><i class="fas fa-download"></i> Download Certificate</button>
+                <button class="modal-btn modal-btn-download" onclick="downloadCertificate()"><i class="fas fa-download"></i> Download Certificate</button>
                 <button class="modal-btn modal-btn-print" onclick="printCertificate()"><i class="fas fa-print"></i> Print Certificate</button>
             </div>
         </div>
@@ -210,41 +263,10 @@
 
     function showCertificatePopup(certificate) {
         const modal = document.getElementById('certificateViewModal');
-        const container = document.getElementById('certificateDisplay');
+        const img = document.getElementById('certificateImage');
         
-        container.innerHTML = `
-            <div class="clonegpt-large">
-                <i class="fas fa-cube"></i> CLONEGPT <i class="fas fa-cube"></i>
-            </div>
-            <h1>🎓 CERTIFICATE OF COMPLETION 🎓</h1>
-            <div style="font-size: 18px; color: #a1a1aa; margin-bottom: 20px;">This prestigious certificate is proudly presented to</div>
-            <div class="student-name">${certificate.studentName}</div>
-            <div class="course-name">For successfully completing</div>
-            <div class="course-name" style="font-size: 32px; background: linear-gradient(135deg, #ffd700, #ffb347); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 800;">${certificate.courseName}</div>
-            <div style="margin: 25px 0; color: #a1a1aa; line-height: 1.8;">
-                Having demonstrated exceptional understanding and mastery of<br>
-                all ${certificate.lessonsCompleted} comprehensive lessons, including HTML structure,<br>
-                semantic elements, forms, multimedia, and modern web standards.
-            </div>
-            <div class="date">
-                <i class="fas fa-calendar-alt"></i> Date of Achievement: ${certificate.completionDate}
-            </div>
-            <div class="signature-area">
-                <div>
-                    <div class="signature-line"></div>
-                    <div class="signature-name">✍️ Pratik Singh</div>
-                    <div style="font-size: 12px; color: #a1a1aa; margin-top: 5px;">Founder & Director, CLONEGPT</div>
-                </div>
-                <div>
-                    <div class="signature-line"></div>
-                    <div style="margin-top: 15px; font-size: 12px; color: #a1a1aa;">Authorized Signature</div>
-                    <div style="font-size: 11px; color: #71717a;">Certificate ID: ${certificate.id}</div>
-                </div>
-            </div>
-            <div class="seal">
-                <i class="fas fa-certificate"></i>
-            </div>
-        `;
+        // Reset image src to ensure it loads
+        img.src = "ChatGPT Image Jun 8, 2026, 02_50_02 AM.png";
         
         currentViewingCertificate = certificate;
         modal.classList.add('active');
@@ -255,206 +277,34 @@
         currentViewingCertificate = null;
     }
 
-    function downloadCertificateAsHTML() {
-        if (!currentViewingCertificate) return;
+    function downloadCertificate() {
+        const img = document.getElementById('certificateImage');
+        const canvas = document.createElement('canvas');
+        canvas.width = img.naturalWidth || 800;
+        canvas.height = img.naturalHeight || 600;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
         
-        const cert = currentViewingCertificate;
-        const certHtml = `<!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="UTF-8">
-            <title>CLONEGPT Certificate - ${cert.courseName}</title>
-            <style>
-                * { margin: 0; padding: 0; box-sizing: border-box; }
-                body {
-                    font-family: 'Georgia', 'Times New Roman', serif;
-                    background: linear-gradient(135deg, #0a0a0f, #1a1a3e);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    min-height: 100vh;
-                    padding: 40px;
-                }
-                .certificate {
-                    background: linear-gradient(135deg, #0a0a1a, #0f0f2a, #1a1a3e);
-                    border: 3px solid;
-                    border-image: linear-gradient(135deg, #ffd700, #ffb347, #a78bfa, #d946ef) 1;
-                    border-radius: 25px;
-                    padding: 60px;
-                    max-width: 1000px;
-                    width: 100%;
-                    text-align: center;
-                    position: relative;
-                    box-shadow: 0 40px 70px rgba(0,0,0,0.6);
-                }
-                .certificate::before {
-                    content: '';
-                    position: absolute;
-                    top: 15px;
-                    left: 15px;
-                    right: 15px;
-                    bottom: 15px;
-                    border: 1px dashed rgba(255, 215, 0, 0.3);
-                    border-radius: 18px;
-                    pointer-events: none;
-                }
-                .certificate .clonegpt-large {
-                    font-size: 68px;
-                    font-weight: 900;
-                    background: linear-gradient(135deg, #ffd700, #ffb347, #ff8c00, #ffd700);
-                    background-size: 300% 300%;
-                    -webkit-background-clip: text;
-                    background-clip: text;
-                    color: transparent;
-                    letter-spacing: 15px;
-                    margin-bottom: 25px;
-                    animation: textShine 3s ease infinite;
-                }
-                @keyframes textShine {
-                    0% { background-position: 0% 50%; }
-                    50% { background-position: 100% 50%; }
-                    100% { background-position: 0% 50%; }
-                }
-                .certificate h1 {
-                    font-size: 42px;
-                    background: linear-gradient(135deg, #ffd700, #ffb347);
-                    -webkit-background-clip: text;
-                    background-clip: text;
-                    color: transparent;
-                    margin-bottom: 30px;
-                }
-                .certificate .student-name {
-                    font-size: 48px;
-                    background: linear-gradient(135deg, #ffd700, #fff8e7);
-                    -webkit-background-clip: text;
-                    background-clip: text;
-                    color: transparent;
-                    margin: 30px 0;
-                    border-bottom: 3px solid #ffd700;
-                    display: inline-block;
-                    padding: 0 50px;
-                    font-weight: 800;
-                    text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
-                    letter-spacing: 3px;
-                }
-                .certificate .course-name {
-                    font-size: 30px;
-                    background: linear-gradient(135deg, #c7d2fe, #a78bfa, #f0abfc);
-                    -webkit-background-clip: text;
-                    background-clip: text;
-                    color: transparent;
-                    margin: 20px 0;
-                }
-                .certificate .date {
-                    margin-top: 50px;
-                    color: #a1a1aa;
-                    border-top: 1px solid rgba(255, 215, 0, 0.3);
-                    display: inline-block;
-                    padding-top: 20px;
-                }
-                .certificate .signature-area {
-                    margin-top: 50px;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: flex-end;
-                    padding: 0 40px;
-                }
-                .certificate .signature-line {
-                    border-top: 2px solid #ffd700;
-                    width: 220px;
-                    margin-top: 10px;
-                    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-                }
-                .certificate .signature-name {
-                    font-family: 'Brush Script MT', cursive;
-                    font-size: 42px;
-                    color: #ffd700;
-                    margin-top: 5px;
-                    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-                }
-                .certificate .seal {
-                    position: absolute;
-                    bottom: 45px;
-                    right: 45px;
-                    width: 110px;
-                    height: 110px;
-                    border-radius: 50%;
-                    border: 2px solid #ffd700;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    background: radial-gradient(circle, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.05));
-                    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
-                }
-                .certificate .seal i {
-                    font-size: 58px;
-                    color: #ffd700;
-                    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
-                }
-                @media print {
-                    body { background: white; padding: 0; }
-                    .certificate { box-shadow: none; background: white; }
-                }
-            </style>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        </head>
-        <body>
-            <div class="certificate">
-                <div class="clonegpt-large"><i class="fas fa-cube"></i> CLONEGPT <i class="fas fa-cube"></i></div>
-                <h1>🎓 CERTIFICATE OF COMPLETION 🎓</h1>
-                <div style="font-size: 18px; color: #a1a1aa;">This prestigious certificate is proudly presented to</div>
-                <div class="student-name">${cert.studentName}</div>
-                <div class="course-name">For successfully completing</div>
-                <div class="course-name" style="font-size: 36px; background: linear-gradient(135deg, #ffd700, #ffb347, #ff8c00); -webkit-background-clip: text; background-clip: text; color: transparent;">${cert.courseName}</div>
-                <div style="margin: 25px 0; color: #a1a1aa;">Having completed all ${cert.lessonsCompleted} comprehensive lessons</div>
-                <div class="date"><i class="fas fa-calendar-alt"></i> Date: ${cert.completionDate}</div>
-                <div class="signature-area">
-                    <div>
-                        <div class="signature-line"></div>
-                        <div class="signature-name">✍️ Pratik Singh</div>
-                        <div style="font-size: 12px; color: #a1a1aa;">Founder & Director, CLONEGPT</div>
-                    </div>
-                    <div>
-                        <div class="signature-line"></div>
-                        <div style="margin-top: 15px; font-size: 12px; color: #a1a1aa;">Authorized Signature</div>
-                        <div style="font-size: 11px; color: #71717a;">ID: ${cert.id}</div>
-                    </div>
-                </div>
-                <div class="seal"><i class="fas fa-certificate"></i></div>
-            </div>
-        </body>
-        </html>`;
-        
-        const blob = new Blob([certHtml], { type: 'text/html' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `CLONEGPT_Certificate_${cert.courseName.replace(/\s/g, '_')}_${cert.studentName.replace(/\s/g, '_')}.html`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
+        const link = document.createElement('a');
+        link.download = `CloneGPT_Certificate.png`;
+        link.href = canvas.toDataURL();
+        link.click();
     }
 
     function printCertificate() {
-        const certHtml = document.getElementById('certificateDisplay').innerHTML;
+        const imgSrc = document.getElementById('certificateImage').src;
         const printWindow = window.open('', '_blank');
         printWindow.document.write(`
             <html>
             <head>
-                <title>CLONEGPT Certificate</title>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+                <title>CloneGPT Certificate</title>
                 <style>
-                    * { margin: 0; padding: 0; box-sizing: border-box; }
-                    body { font-family: 'Georgia', serif; background: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-                    .certificate-display { background: white; border: 15px solid #ffd700; border-radius: 20px; padding: 40px; max-width: 900px; text-align: center; }
-                    .clonegpt-large { font-size: 42px; font-weight: bold; color: #8b5cf6; margin-bottom: 20px; }
-                    .student-name { font-size: 36px; color: #6366f1; border-bottom: 3px solid #6366f1; display: inline-block; margin: 20px 0; }
-                    .signature-name { font-family: 'Brush Script MT', cursive; font-size: 32px; color: #ffd700; }
-                    @media print { body { padding: 20px; } }
+                    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+                    img { max-width: 100%; height: auto; }
+                    @media print { body { margin: 0; padding: 0; } }
                 </style>
             </head>
-            <body>${certHtml}</body>
+            <body><img src="${imgSrc}" alt="Certificate"></body>
             </html>
         `);
         printWindow.document.close();
@@ -966,7 +816,7 @@
     window.prevLesson = prevLesson;
     window.backToDashboard = backToDashboard;
     window.showExistingCertificate = showExistingCertificate;
-    window.downloadCertificateAsHTML = downloadCertificateAsHTML;
+    window.downloadCertificate = downloadCertificate;
     window.printCertificate = printCertificate;
     window.closeCertificateViewModal = closeCertificateViewModal;
     window.showComingSoon = showComingSoon;
