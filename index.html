@@ -134,6 +134,7 @@
         .modal-btn-download { background: linear-gradient(135deg, #10b981, #059669); color: white; box-shadow: 0 15px 40px rgba(16, 185, 129, 0.3); }
         .modal-btn-print { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; }
         
+        /* CERTIFICATE DISPLAY - YOUR IMAGE WILL SHOW HERE */
         .certificate-img { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         
         .certificate-list { display: flex; flex-direction: column; gap: 20px; }
@@ -174,28 +175,6 @@
         .email-skip-btn { background: rgba(255, 255, 255, 0.03); border: 1.5px solid rgba(239, 68, 68, 0.3); color: #fca5a5; padding: 0.8rem 2rem; border-radius: 50px; cursor: pointer; font-weight: 600; display: inline-flex; align-items: center; gap: 0.7rem; transition: all 0.3s; }
         .email-skip-btn:hover { background: rgba(239, 68, 68, 0.1); border-color: #ef4444; transform: translateY(-2px); }
         
-        /* Battle Mode Styles */
-        .battle-mode-selector { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin: 30px 0; }
-        .battle-mode-card { background: rgba(20, 20, 35, 0.6); backdrop-filter: blur(20px); border: 1.5px solid rgba(139, 92, 246, 0.2); border-radius: 2rem; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.3s; width: 200px; }
-        .battle-mode-card:hover { transform: translateY(-5px); border-color: #8b5cf6; box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3); }
-        .battle-mode-card i { font-size: 3rem; margin-bottom: 1rem; }
-        .battle-mode-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-        .battle-mode-card p { color: #a1a1aa; font-size: 0.85rem; }
-        .battle-id-box { background: rgba(0,0,0,0.5); padding: 20px; border-radius: 1rem; text-align: center; margin: 20px 0; }
-        .battle-id { font-size: 2rem; font-weight: bold; letter-spacing: 5px; background: linear-gradient(135deg, #ffd700, #ffb347); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .online-players-list { display: flex; flex-direction: column; gap: 15px; max-height: 400px; overflow-y: auto; }
-        .online-player { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: rgba(139, 92, 246, 0.08); border-radius: 1rem; border: 1px solid rgba(139, 92, 246, 0.15); }
-        .online-player .player-info { display: flex; align-items: center; gap: 15px; }
-        .online-player .player-status { width: 12px; height: 12px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px #10b981; }
-        .invite-btn { background: linear-gradient(135deg, #6366f1, #8b5cf6); border: none; padding: 8px 20px; border-radius: 50px; color: white; cursor: pointer; }
-        .join-battle-input { display: flex; gap: 10px; margin: 20px 0; }
-        .join-battle-input input { flex: 1; padding: 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(139,92,246,0.3); border-radius: 1rem; color: white; }
-        .battle-arena { text-align: center; }
-        .problem-box { background: rgba(0,0,0,0.5); padding: 20px; border-radius: 1rem; margin: 20px 0; text-align: left; }
-        .battle-code-area { width: 100%; min-height: 300px; background: rgba(0,0,0,0.5); border: 1px solid rgba(139,92,246,0.3); border-radius: 1rem; padding: 15px; color: white; font-family: monospace; }
-        .battle-timer { font-size: 3rem; font-weight: bold; color: #ffd700; }
-        .battle-result { font-size: 2rem; font-weight: bold; margin: 20px 0; }
-        
         @media (max-width: 768px) {
             .hero-title { font-size: 2.5rem; }
             .stats-row { gap: 2rem; }
@@ -227,33 +206,13 @@
             <button class="modal-close" onclick="closeCertificateViewModal()"><i class="fas fa-times"></i></button>
         </div>
         <div class="modal-body">
+            <!-- ✅ YAHAN AAPKI IMAGE SHOW HOGI (JO REPO MEIN HAI) ✅ -->
             <img id="certificateImage" class="certificate-img" src="ChatGPT Image Jun 8, 2026, 02_50_02 AM.png" alt="Certificate">
             <div class="modal-actions">
                 <button class="modal-btn modal-btn-download" onclick="downloadCertificate()"><i class="fas fa-download"></i> Download Certificate</button>
                 <button class="modal-btn modal-btn-print" onclick="printCertificate()"><i class="fas fa-print"></i> Print Certificate</button>
             </div>
         </div>
-    </div>
-</div>
-
-<!-- Battle Modals -->
-<div id="battleModeModal" class="modal">
-    <div class="modal-window">
-        <div class="modal-header">
-            <h3><i class="fas fa-gamepad"></i> Coding Battle</h3>
-            <button class="modal-close" onclick="closeBattleModal()"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="modal-body" id="battleModalBody"></div>
-    </div>
-</div>
-
-<div id="battleArenaModal" class="modal">
-    <div class="modal-window" style="max-width: 1200px;">
-        <div class="modal-header">
-            <h3 id="battleArenaTitle"><i class="fas fa-sword"></i> Coding Battle</h3>
-            <button class="modal-close" onclick="closeBattleArena()"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="modal-body" id="battleArenaBody"></div>
     </div>
 </div>
 
@@ -306,6 +265,7 @@
         const modal = document.getElementById('certificateViewModal');
         const img = document.getElementById('certificateImage');
         
+        // Reset image src to ensure it loads
         img.src = "ChatGPT Image Jun 8, 2026, 02_50_02 AM.png";
         
         currentViewingCertificate = certificate;
@@ -411,360 +371,6 @@
         { id: 6, name: "Discord Hub", icon: "fa-brands fa-discord", color: "#5865F2", desc: "Community platform", status: "available" }
     ];
 
-    // Battle System Variables
-    let currentBattle = null;
-    let battleInterval = null;
-    let battleProblems = [
-        { title: "Reverse a String", description: "Write a function that reverses a given string.", testCases: ["hello->olleh", "world->dlrow"] },
-        { title: "Find Maximum", description: "Find the maximum number in an array.", testCases: ["[1,5,3,9,2]->9", "[ -5, -1, -8]->-1"] },
-        { title: "Palindrome Check", description: "Check if a string is a palindrome.", testCases: ["racecar->true", "hello->false"] },
-        { title: "FizzBuzz", description: "Print Fizz for multiples of 3, Buzz for 5, FizzBuzz for both.", testCases: ["3->Fizz", "5->Buzz", "15->FizzBuzz"] }
-    ];
-    
-    function getRandomProblem() {
-        return battleProblems[Math.floor(Math.random() * battleProblems.length)];
-    }
-
-    function showCodingBattle() {
-        document.getElementById('battleModeModal').classList.add('active');
-        renderBattleModeSelection();
-    }
-
-    function renderBattleModeSelection() {
-        const body = document.getElementById('battleModalBody');
-        body.innerHTML = `
-            <h3 style="text-align:center; margin-bottom:20px;">Choose your battle opponent</h3>
-            <div class="battle-mode-selector">
-                <div class="battle-mode-card" onclick="startBattleWithAI()">
-                    <i class="fas fa-robot" style="color: #8b5cf6;"></i>
-                    <h3>🤖 vs AI</h3>
-                    <p>Battle against artificial intelligence</p>
-                </div>
-                <div class="battle-mode-card" onclick="showFriendBattleOptions()">
-                    <i class="fas fa-user-friends" style="color: #10b981;"></i>
-                    <h3>👥 vs Friend</h3>
-                    <p>Battle with a friend using Battle ID</p>
-                </div>
-                <div class="battle-mode-card" onclick="showWorldBattleOptions()">
-                    <i class="fas fa-globe" style="color: #f59e0b;"></i>
-                    <h3>🌍 vs World</h3>
-                    <p>Challenge online players</p>
-                </div>
-            </div>
-        `;
-    }
-
-    // AI Battle
-    function startBattleWithAI() {
-        closeBattleModal();
-        const problem = getRandomProblem();
-        currentBattle = {
-            type: 'ai',
-            problem: problem,
-            playerCode: '',
-            aiCode: generateAISolution(problem),
-            status: 'active',
-            startTime: Date.now()
-        };
-        showBattleArena('vs AI', problem, true);
-    }
-
-    function generateAISolution(problem) {
-        const solutions = {
-            "Reverse a String": "function reverseString(str) {\n    return str.split('').reverse().join('');\n}",
-            "Find Maximum": "function findMax(arr) {\n    return Math.max(...arr);\n}",
-            "Palindrome Check": "function isPalindrome(str) {\n    return str === str.split('').reverse().join('');\n}",
-            "FizzBuzz": "function fizzBuzz(n) {\n    if (n % 15 === 0) return 'FizzBuzz';\n    if (n % 3 === 0) return 'Fizz';\n    if (n % 5 === 0) return 'Buzz';\n    return n;\n}"
-        };
-        return solutions[problem.title] || "// AI Solution\nfunction solve() {\n    // Implementation\n    return 'Done';\n}";
-    }
-
-    // Friend Battle - Create Battle ID
-    let pendingBattleInvites = JSON.parse(localStorage.getItem('battle_invites')) || [];
-    
-    function showFriendBattleOptions() {
-        const body = document.getElementById('battleModalBody');
-        body.innerHTML = `
-            <h3 style="text-align:center; margin-bottom:20px;">👥 Battle with Friend</h3>
-            <div class="battle-mode-selector" style="flex-direction:column; gap:15px;">
-                <div class="battle-mode-card" onclick="createBattleRoom()" style="width:auto;">
-                    <i class="fas fa-plus-circle"></i>
-                    <h3>Create Battle Room</h3>
-                    <p>Generate a Battle ID to share with your friend</p>
-                </div>
-                <div class="battle-mode-card" onclick="showJoinBattle()" style="width:auto;">
-                    <i class="fas fa-sign-in-alt"></i>
-                    <h3>Join Battle Room</h3>
-                    <p>Enter a Battle ID to join friend's battle</p>
-                </div>
-            </div>
-        `;
-    }
-
-    function createBattleRoom() {
-        const battleId = 'BATTLE_' + Math.random().toString(36).substring(2, 10).toUpperCase();
-        const problem = getRandomProblem();
-        const battleRoom = {
-            id: battleId,
-            problem: problem,
-            creator: localStorage.getItem('student_name') || 'Player',
-            status: 'waiting',
-            createdAt: Date.now()
-        };
-        pendingBattleInvites.push(battleRoom);
-        localStorage.setItem('battle_invites', JSON.stringify(pendingBattleInvites));
-        
-        const body = document.getElementById('battleModalBody');
-        body.innerHTML = `
-            <div class="battle-id-box">
-                <i class="fas fa-share-alt" style="font-size:2rem; margin-bottom:10px; display:block;"></i>
-                <p>Share this Battle ID with your friend:</p>
-                <div class="battle-id">${battleId}</div>
-                <button class="hero-btn" style="margin-top:20px; padding:10px 30px;" onclick="copyBattleId('${battleId}')"><i class="fas fa-copy"></i> Copy ID</button>
-                <p style="margin-top:20px; color:#a1a1aa;"><i class="fas fa-spinner fa-pulse"></i> Waiting for friend to join...</p>
-            </div>
-            <button class="back-to-dashboard" onclick="renderBattleModeSelection()" style="display:block; margin:20px auto 0;"><i class="fas fa-arrow-left"></i> Back</button>
-        `;
-        
-        // Check for joins periodically
-        const checkInterval = setInterval(() => {
-            const updatedInvites = JSON.parse(localStorage.getItem('battle_invites')) || [];
-            const room = updatedInvites.find(r => r.id === battleId);
-            if (room && room.status === 'joined') {
-                clearInterval(checkInterval);
-                currentBattle = {
-                    type: 'friend',
-                    problem: room.problem,
-                    opponent: room.joiner,
-                    status: 'active',
-                    startTime: Date.now()
-                };
-                closeBattleModal();
-                showBattleArena(`vs ${room.joiner}`, room.problem, false);
-            }
-        }, 1000);
-        
-        setTimeout(() => {
-            clearInterval(checkInterval);
-        }, 300000); // 5 min timeout
-    }
-
-    function copyBattleId(id) {
-        navigator.clipboard.writeText(id);
-        alert('Battle ID copied! Share it with your friend.');
-    }
-
-    function showJoinBattle() {
-        const body = document.getElementById('battleModalBody');
-        body.innerHTML = `
-            <h3 style="text-align:center; margin-bottom:20px;">Join Battle</h3>
-            <div class="join-battle-input">
-                <input type="text" id="joinBattleId" placeholder="Enter Battle ID (e.g., BATTLE_7X9K2M)">
-                <button class="hero-btn" style="padding:15px 25px;" onclick="joinBattleRoom()"><i class="fas fa-sign-in-alt"></i> Join</button>
-            </div>
-            <button class="back-to-dashboard" onclick="renderBattleModeSelection()" style="display:block; margin:20px auto 0;"><i class="fas fa-arrow-left"></i> Back</button>
-        `;
-    }
-
-    function joinBattleRoom() {
-        const battleId = document.getElementById('joinBattleId')?.value?.toUpperCase();
-        if (!battleId) {
-            alert('Please enter a Battle ID');
-            return;
-        }
-        
-        let invites = JSON.parse(localStorage.getItem('battle_invites')) || [];
-        const room = invites.find(r => r.id === battleId && r.status === 'waiting');
-        
-        if (room) {
-            room.status = 'joined';
-            room.joiner = localStorage.getItem('student_name') || 'Player';
-            localStorage.setItem('battle_invites', JSON.stringify(invites));
-            
-            currentBattle = {
-                type: 'friend',
-                problem: room.problem,
-                opponent: room.creator,
-                status: 'active',
-                startTime: Date.now()
-            };
-            closeBattleModal();
-            showBattleArena(`vs ${room.creator}`, room.problem, false);
-        } else {
-            alert('Invalid or expired Battle ID. Please check and try again.');
-        }
-    }
-
-    // World Battle - Online Players
-    let onlinePlayers = JSON.parse(localStorage.getItem('online_players')) || [];
-    let pendingChallenges = JSON.parse(localStorage.getItem('pending_challenges')) || [];
-    
-    function updateOnlineStatus() {
-        const playerName = localStorage.getItem('student_name') || 'Player';
-        if (!onlinePlayers.find(p => p.name === playerName)) {
-            onlinePlayers = onlinePlayers.filter(p => Date.now() - p.lastSeen < 60000);
-            onlinePlayers.push({ name: playerName, lastSeen: Date.now(), status: 'online' });
-            localStorage.setItem('online_players', JSON.stringify(onlinePlayers));
-        }
-    }
-    
-    setInterval(() => {
-        if (localStorage.getItem('clonegpt_ultimate_logged_in') === 'true') {
-            updateOnlineStatus();
-        }
-    }, 30000);
-    
-    function showWorldBattleOptions() {
-        updateOnlineStatus();
-        const currentPlayer = localStorage.getItem('student_name') || 'Player';
-        const otherPlayers = onlinePlayers.filter(p => p.name !== currentPlayer && Date.now() - p.lastSeen < 60000);
-        
-        let challengesHtml = '';
-        const myChallenges = pendingChallenges.filter(c => c.to === currentPlayer && c.status === 'pending');
-        if (myChallenges.length > 0) {
-            challengesHtml = `<div style="margin-bottom:20px;"><h4><i class="fas fa-bell"></i> Pending Challenges</h4>`;
-            myChallenges.forEach(ch => {
-                challengesHtml += `
-                    <div class="online-player">
-                        <div class="player-info"><div class="player-status"></div><span>${ch.from}</span></div>
-                        <div><button class="invite-btn" onclick="acceptChallenge('${ch.from}')" style="background:#10b981;">Accept</button>
-                        <button class="invite-btn" onclick="rejectChallenge('${ch.from}')" style="background:#ef4444;">Reject</button></div>
-                    </div>
-                `;
-            });
-            challengesHtml += `</div>`;
-        }
-        
-        const body = document.getElementById('battleModalBody');
-        body.innerHTML = `
-            <h3 style="text-align:center; margin-bottom:20px;">🌍 Online Players</h3>
-            ${challengesHtml}
-            <div class="online-players-list">
-                ${otherPlayers.length === 0 ? '<p style="text-align:center; color:#a1a1aa;">No other players online right now. Check back later!</p>' : ''}
-                ${otherPlayers.map(p => `
-                    <div class="online-player">
-                        <div class="player-info"><div class="player-status"></div><span>${p.name}</span></div>
-                        <button class="invite-btn" onclick="sendChallenge('${p.name}')"><i class="fas fa-gamepad"></i> Invite to Battle</button>
-                    </div>
-                `).join('')}
-            </div>
-            <button class="back-to-dashboard" onclick="renderBattleModeSelection()" style="display:block; margin:20px auto 0;"><i class="fas fa-arrow-left"></i> Back</button>
-        `;
-    }
-    
-    function sendChallenge(toPlayer) {
-        const fromPlayer = localStorage.getItem('student_name') || 'Player';
-        const challenge = {
-            id: Date.now(),
-            from: fromPlayer,
-            to: toPlayer,
-            status: 'pending',
-            problem: getRandomProblem(),
-            createdAt: Date.now()
-        };
-        pendingChallenges.push(challenge);
-        localStorage.setItem('pending_challenges', JSON.stringify(pendingChallenges));
-        alert(`Challenge sent to ${toPlayer}!`);
-        showWorldBattleOptions();
-    }
-    
-    function acceptChallenge(fromPlayer) {
-        const challenge = pendingChallenges.find(c => c.from === fromPlayer && c.status === 'pending');
-        if (challenge) {
-            challenge.status = 'accepted';
-            localStorage.setItem('pending_challenges', JSON.stringify(pendingChallenges));
-            currentBattle = {
-                type: 'world',
-                problem: challenge.problem,
-                opponent: fromPlayer,
-                status: 'active',
-                startTime: Date.now()
-            };
-            closeBattleModal();
-            showBattleArena(`vs ${fromPlayer}`, challenge.problem, false);
-        }
-    }
-    
-    function rejectChallenge(fromPlayer) {
-        pendingChallenges = pendingChallenges.filter(c => !(c.from === fromPlayer && c.status === 'pending'));
-        localStorage.setItem('pending_challenges', JSON.stringify(pendingChallenges));
-        showWorldBattleOptions();
-    }
-
-    // Battle Arena
-    function showBattleArena(opponentText, problem, isAI) {
-        document.getElementById('battleArenaModal').classList.add('active');
-        const body = document.getElementById('battleArenaBody');
-        const title = document.getElementById('battleArenaTitle');
-        title.innerHTML = `<i class="fas fa-sword"></i> Coding Battle ${opponentText}`;
-        
-        let timer = 300; // 5 minutes in seconds
-        let userCode = '';
-        
-        function updateTimer() {
-            const mins = Math.floor(timer / 60);
-            const secs = timer % 60;
-            document.getElementById('battleTimer').innerHTML = `${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
-            if (timer <= 0) {
-                clearInterval(battleInterval);
-                document.getElementById('battleResult').innerHTML = '<span style="color:#ef4444;">⏰ Time\'s Up! You Lost!</span>';
-                document.getElementById('battleSubmitBtn').disabled = true;
-            }
-            timer--;
-        }
-        
-        body.innerHTML = `
-            <div class="battle-arena">
-                <div class="battle-timer" id="battleTimer">05:00</div>
-                <div class="problem-box">
-                    <h4><i class="fas fa-code"></i> ${problem.title}</h4>
-                    <p>${problem.description}</p>
-                    <small>Test Cases:</small>
-                    <ul>${problem.testCases.map(tc => `<li>${tc}</li>`).join('')}</ul>
-                </div>
-                <textarea id="battleCodeArea" class="battle-code-area" placeholder="Write your solution here..."></textarea>
-                <div style="margin-top:20px;">
-                    <button id="battleSubmitBtn" class="hero-btn" style="padding:12px 30px;"><i class="fas fa-check"></i> Submit Solution</button>
-                </div>
-                <div id="battleResult" class="battle-result"></div>
-            </div>
-        `;
-        
-        updateTimer();
-        battleInterval = setInterval(updateTimer, 1000);
-        
-        document.getElementById('battleSubmitBtn').onclick = () => {
-            const userSolution = document.getElementById('battleCodeArea').value;
-            clearInterval(battleInterval);
-            
-            if (isAI) {
-                // Compare with AI
-                if (userSolution.trim().length > 10) {
-                    document.getElementById('battleResult').innerHTML = '<span style="color:#10b981;">🎉 YOU WIN against AI! 🎉</span>';
-                } else {
-                    document.getElementById('battleResult').innerHTML = '<span style="color:#ef4444;">🤖 AI Wins! Better luck next time!</span>';
-                }
-            } else {
-                // For friend/world - store result
-                document.getElementById('battleResult').innerHTML = '<span style="color:#ffd700;">✅ Solution submitted! Waiting for opponent...</span>';
-                // In real scenario, would sync. For demo, just show win
-                setTimeout(() => {
-                    document.getElementById('battleResult').innerHTML = '<span style="color:#10b981;">🏆 YOU WIN! 🏆</span>';
-                }, 2000);
-            }
-        };
-    }
-    
-    function closeBattleModal() {
-        document.getElementById('battleModeModal').classList.remove('active');
-    }
-    
-    function closeBattleArena() {
-        if (battleInterval) clearInterval(battleInterval);
-        document.getElementById('battleArenaModal').classList.remove('active');
-        currentBattle = null;
-    }
-
     let currentPage = 'start';
     let isLoggedIn = false;
     let activeModule = 'learn';
@@ -783,7 +389,6 @@
         if (localStorage.getItem('html_course_completed') === 'true') {
             certificateTabVisible = true;
         }
-        updateOnlineStatus();
     }
 
     function generateCloneCode(clone) {
@@ -1067,7 +672,6 @@
                                 <button class="tab ${activeModule === 'learn' ? 'active' : ''}" onclick="switchModule('learn')"><i class="fas fa-graduation-cap"></i> Learn</button>
                                 <button class="tab ${activeModule === 'compiler' ? 'active' : ''}" onclick="switchModule('compiler')"><i class="fas fa-code"></i> Compiler</button>
                                 <button class="tab ${activeModule === 'clones' ? 'active' : ''}" onclick="switchModule('clones')"><i class="fas fa-clone"></i> Clones</button>
-                                <button class="tab ${activeModule === 'battle' ? 'active' : ''}" onclick="switchModule('battle')"><i class="fas fa-gamepad"></i> 🎮 Coding Battle</button>
                                 <button id="certificatesTab" class="tab certificate-tab ${activeModule === 'certificates' ? 'active' : ''} ${certTabClass}" onclick="switchModule('certificates')"><i class="fas fa-certificate"></i> Certificates 🎓</button>
                             </div>
                         </div>
@@ -1094,26 +698,6 @@
                             <div id="clonesSection" style="display: ${activeModule === 'clones' ? 'block' : 'none'}">
                                 <div class="section-header"><h2><i class="fas fa-crown"></i> Premium Clones</h2><p>Professional-grade website clones</p></div>
                                 <div class="cards-grid">${clonesHtml}</div>
-                            </div>
-                            <div id="battleSection" style="display: ${activeModule === 'battle' ? 'block' : 'none'}">
-                                <div class="section-header"><h2><i class="fas fa-gamepad"></i> Coding Battle</h2><p>Challenge AI, Friends, or Players Worldwide!</p></div>
-                                <div class="battle-mode-selector">
-                                    <div class="battle-mode-card" onclick="startBattleWithAI()">
-                                        <i class="fas fa-robot" style="color: #8b5cf6;"></i>
-                                        <h3>🤖 vs AI</h3>
-                                        <p>Battle against artificial intelligence</p>
-                                    </div>
-                                    <div class="battle-mode-card" onclick="showFriendBattleOptions()">
-                                        <i class="fas fa-user-friends" style="color: #10b981;"></i>
-                                        <h3>👥 vs Friend</h3>
-                                        <p>Battle with a friend using Battle ID</p>
-                                    </div>
-                                    <div class="battle-mode-card" onclick="showWorldBattleOptions()">
-                                        <i class="fas fa-globe" style="color: #f59e0b;"></i>
-                                        <h3>🌍 vs World</h3>
-                                        <p>Challenge online players</p>
-                                    </div>
-                                </div>
                             </div>
                             <div id="certificatesSection" style="display: ${activeModule === 'certificates' ? 'block' : 'none'}">
                                 <div class="section-header"><h2><i class="fas fa-certificate"></i> My Certificates</h2><p>Your CLONEGPT achievements</p></div>
@@ -1168,7 +752,6 @@
         autoEmailTriggered = false;
         currentLessonPage = parseInt(localStorage.getItem('html_current_lesson')) || 1;
         localStorage.setItem('clonegpt_ultimate_logged_in', 'true'); 
-        updateOnlineStatus();
         
         if (localStorage.getItem('html_course_completed') === 'true') {
             certificateTabVisible = true;
@@ -1182,11 +765,6 @@
         currentPage = 'start'; 
         autoEmailTriggered = false;
         localStorage.removeItem('clonegpt_ultimate_logged_in'); 
-        // Remove from online players
-        const playerName = localStorage.getItem('student_name') || 'Player';
-        let players = JSON.parse(localStorage.getItem('online_players')) || [];
-        players = players.filter(p => p.name !== playerName);
-        localStorage.setItem('online_players', JSON.stringify(players));
         render(); 
     };
     
@@ -1244,22 +822,6 @@
     window.showComingSoon = showComingSoon;
     window.closeComingSoonModal = closeComingSoonModal;
     window.notifyMe = notifyMe;
-    
-    // Battle Global Functions
-    window.showCodingBattle = showCodingBattle;
-    window.startBattleWithAI = startBattleWithAI;
-    window.showFriendBattleOptions = showFriendBattleOptions;
-    window.showWorldBattleOptions = showWorldBattleOptions;
-    window.createBattleRoom = createBattleRoom;
-    window.showJoinBattle = showJoinBattle;
-    window.joinBattleRoom = joinBattleRoom;
-    window.copyBattleId = copyBattleId;
-    window.sendChallenge = sendChallenge;
-    window.acceptChallenge = acceptChallenge;
-    window.rejectChallenge = rejectChallenge;
-    window.closeBattleModal = closeBattleModal;
-    window.closeBattleArena = closeBattleArena;
-    window.renderBattleModeSelection = renderBattleModeSelection;
 
     // Initial check
     if (checkAutoLogin()) {
@@ -1269,7 +831,6 @@
             certificateTabVisible = true;
         }
         checkAndIssueHTMLCertificate();
-        updateOnlineStatus();
     }
 
     render();
