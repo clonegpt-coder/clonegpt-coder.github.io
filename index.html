@@ -19,6 +19,11 @@
         .nebula-3 { width: 50vw; height: 50vw; background: radial-gradient(circle, #06b6d4, #3b82f6); top: 50%; left: 40%; animation: nebulaFloat 30s ease-in-out infinite; }
         @keyframes nebulaFloat { 0%, 100% { transform: translate(0, 0) scale(1); } 25% { transform: translate(3%, 4%) scale(1.05); } 50% { transform: translate(-2%, 6%) scale(0.98); } 75% { transform: translate(5%, -3%) scale(1.03); } }
         
+        .language-selector { position: fixed; top: 20px; right: 20px; z-index: 1000; background: rgba(0,0,0,0.7); backdrop-filter: blur(10px); padding: 8px 16px; border-radius: 50px; border: 1px solid rgba(139,92,246,0.3); }
+        .language-selector select { background: transparent; color: white; border: none; padding: 8px 12px; font-size: 14px; cursor: pointer; outline: none; font-weight: 600; }
+        .language-selector select option { background: #1a1a2e; color: white; }
+        .language-selector i { margin-right: 8px; color: #a78bfa; }
+        
         .start-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem; }
         .hero-content { text-align: center; max-width: 1100px; animation: cinematicReveal 1.2s ease; }
         @keyframes cinematicReveal { 0% { opacity: 0; transform: translateY(60px) scale(0.9); filter: blur(10px); } 100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } }
@@ -95,11 +100,24 @@
         .progress-bar { width: 100%; height: 8px; background: rgba(139, 92, 246, 0.08); border-radius: 20px; overflow: hidden; }
         .progress-fill { height: 100%; background: linear-gradient(90deg, #6366f1, #8b5cf6, #d946ef); background-size: 200% 200%; border-radius: 20px; transition: width 0.5s; box-shadow: 0 0 20px rgba(139, 92, 246, 0.4); }
         .lesson-content { background: rgba(20, 20, 35, 0.4); backdrop-filter: blur(30px); border: 1.5px solid rgba(139, 92, 246, 0.12); border-radius: 3rem; padding: 3.5rem; margin-bottom: 2.5rem; min-height: 550px; box-shadow: 0 40px 80px rgba(0,0,0,0.4); }
-        .lesson-text { font-size: 1.2rem; line-height: 2; color: #e2e8f0; }
-        .lesson-text h2 { color: #fff; margin-bottom: 2rem; font-size: 2.8rem; font-weight: 700; background: linear-gradient(135deg, #fff, #c7d2fe); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .lesson-text pre { background: rgba(0, 0, 0, 0.5); padding: 2rem; border-radius: 1.8rem; overflow-x: auto; border: 1px solid rgba(139, 92, 246, 0.15); margin: 2.2rem 0; }
-        .lesson-text code { color: #f0abfc; font-family: 'Courier New', monospace; font-size: 1rem; }
-        .tip-box { background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(216, 70, 239, 0.1)); border-left: 5px solid #8b5cf6; padding: 1.8rem; border-radius: 1.2rem; margin: 2.5rem 0; }
+        .lesson-text { font-size: 1.15rem; line-height: 2; color: #e2e8f0; }
+        .lesson-text h2 { color: #fff; margin-bottom: 1.5rem; font-size: 2.2rem; font-weight: 700; background: linear-gradient(135deg, #fff, #c7d2fe); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .lesson-text h3 { color: #c7d2fe; margin: 1.8rem 0 1rem; font-size: 1.4rem; font-weight: 600; }
+        .lesson-text p { margin-bottom: 1.2rem; }
+        .lesson-text ul, .lesson-text ol { margin: 1rem 0 1.5rem 1.5rem; }
+        .lesson-text li { margin-bottom: 0.6rem; color: #cbd5e1; }
+        .lesson-text strong { color: #f0abfc; }
+        .lesson-text em { color: #a78bfa; font-style: italic; }
+        .lesson-text pre { background: rgba(0, 0, 0, 0.6); padding: 2rem; border-radius: 1.5rem; overflow-x: auto; border: 1px solid rgba(139, 92, 246, 0.2); margin: 2rem 0; position: relative; }
+        .lesson-text pre::before { content: 'CODE'; position: absolute; top: 0.8rem; right: 1.2rem; font-size: 0.7rem; color: #6366f1; font-weight: 700; letter-spacing: 2px; }
+        .lesson-text code { color: #f0abfc; font-family: 'Courier New', monospace; font-size: 1rem; line-height: 1.8; }
+        .lesson-text .inline-code { background: rgba(99,102,241,0.15); color: #a78bfa; padding: 0.2rem 0.6rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.95rem; }
+        .tip-box { background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(216, 70, 239, 0.1)); border-left: 5px solid #8b5cf6; padding: 1.5rem 1.8rem; border-radius: 0 1.2rem 1.2rem 0; margin: 2rem 0; }
+        .tip-box strong { color: #c7d2fe; }
+        .warning-box { background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(239, 68, 68, 0.1)); border-left: 5px solid #f59e0b; padding: 1.5rem 1.8rem; border-radius: 0 1.2rem 1.2rem 0; margin: 2rem 0; }
+        .warning-box strong { color: #fcd34d; }
+        .success-box { background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.1)); border-left: 5px solid #10b981; padding: 1.5rem 1.8rem; border-radius: 0 1.2rem 1.2rem 0; margin: 2rem 0; }
+        .success-box strong { color: #6ee7b7; }
         .lesson-navigation { display: flex; justify-content: space-between; align-items: center; margin-top: 2.5rem; flex-wrap: wrap; gap: 1rem; }
         .nav-btn { background: rgba(139, 92, 246, 0.05); border: 1.5px solid rgba(139, 92, 246, 0.15); color: white; padding: 1.1rem 2.8rem; border-radius: 60px; cursor: pointer; font-size: 1.05rem; font-weight: 600; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.9rem; }
         .nav-btn:hover:not(:disabled) { background: rgba(139, 92, 246, 0.12); transform: translateX(-5px); }
@@ -134,9 +152,7 @@
         .modal-btn-download { background: linear-gradient(135deg, #10b981, #059669); color: white; box-shadow: 0 15px 40px rgba(16, 185, 129, 0.3); }
         .modal-btn-print { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; }
         
-        /* CERTIFICATE DISPLAY - YOUR IMAGE WILL SHOW HERE */
         .certificate-img { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        
         .certificate-list { display: flex; flex-direction: column; gap: 20px; }
         .certificate-card-item { background: rgba(20, 20, 35, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 20px; padding: 20px; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s; }
         .certificate-card-item:hover { transform: translateX(5px); border-color: #ffd700; }
@@ -178,7 +194,6 @@
         @media (max-width: 768px) {
             .hero-title { font-size: 2.5rem; }
             .stats-row { gap: 2rem; }
-            .stat:not(:first-child)::before { display: none; }
             .cards-grid { grid-template-columns: 1fr; }
             .navbar { padding: 1rem 1.5rem; }
             .tabs-wrapper { padding: 1.2rem 1.5rem 0 1.5rem; }
@@ -187,6 +202,7 @@
             .hero-btn { padding: 1rem 2rem; font-size: 1rem; }
             .login-container { padding: 2rem; margin: 1rem; }
             .certificate-card-item { flex-direction: column; text-align: center; gap: 15px; }
+            .language-selector { top: 70px; right: 10px; }
         }
     </style>
 </head>
@@ -196,30 +212,27 @@
 <div class="nebula nebula-1"></div>
 <div class="nebula nebula-2"></div>
 <div class="nebula nebula-3"></div>
-<div id="root"></div>
 
-<!-- Certificate View Modal -->
-<div id="certificateViewModal" class="modal">
-    <div class="modal-window">
-        <div class="modal-header">
-            <h3><i class="fas fa-certificate"></i> 🎓 Your Certificate</h3>
-            <button class="modal-close" onclick="closeCertificateViewModal()"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="modal-body">
-            <!-- ✅ YAHAN AAPKI IMAGE SHOW HOGI (JO REPO MEIN HAI) ✅ -->
-            <img id="certificateImage" class="certificate-img" src="ChatGPT Image Jun 8, 2026, 02_50_02 AM.png" alt="Certificate">
-            <div class="modal-actions">
-                <button class="modal-btn modal-btn-download" onclick="downloadCertificate()"><i class="fas fa-download"></i> Download Certificate</button>
-                <button class="modal-btn modal-btn-print" onclick="printCertificate()"><i class="fas fa-print"></i> Print Certificate</button>
-            </div>
-        </div>
-    </div>
+<!-- Language Selector -->
+<div class="language-selector">
+    <i class="fas fa-language"></i>
+    <select id="languageSelect" onchange="changeLanguage(this.value)">
+        <option value="english">🇬🇧 English</option>
+        <option value="hindi">🇮🇳 हिंदी (Hindi)</option>
+        <option value="hinglish">🗣️ Hinglish</option>
+        <option value="japanese">🇯🇵 日本語 (Japanese)</option>
+        <option value="korean">🇰🇷 한국어 (Korean)</option>
+        <option value="funny">😂 Funny English</option>
+    </select>
 </div>
 
+<div id="root"></div>
+
 <script>
-    // Create stars
+    // Stars creation
     function createStars() {
         const starsContainer = document.getElementById('stars');
+        if(!starsContainer) return;
         for (let i = 0; i < 120; i++) {
             const star = document.createElement('div');
             star.className = 'star';
@@ -235,16 +248,364 @@
     }
     createStars();
 
-    // Certificate System
+    // ========== LANGUAGE TRANSLATION SYSTEM ==========
+    let currentLanguage = localStorage.getItem('preferred_language') || 'english';
+    
+    // Translation dictionaries
+    const translations = {
+        english: {
+            // UI Text
+            "lesson": "Lesson",
+            "of": "of",
+            "read": "read",
+            "previous": "Previous",
+            "next": "Next",
+            "dashboard": "Dashboard",
+            "exit": "Exit",
+            "learn": "Learn",
+            "compiler": "Compiler",
+            "clones": "Clones",
+            "certificates": "Certificates",
+            "learning_hub": "Learning Hub",
+            "complete_courses": "Complete courses & earn certificates",
+            "live_compiler": "Live Compiler",
+            "write_preview": "Write HTML, CSS, JS & preview",
+            "premium_clones": "Premium Clones",
+            "professional_clones": "Professional website clones",
+            "my_certificates": "My Certificates",
+            "your_achievements": "Your achievements",
+            "no_certificates": "No Certificates Yet",
+            "complete_html": "Complete the HTML Mastery Course (50 lessons) to earn your certificate!",
+            "start_course": "Start HTML Course",
+            "html_mastery": "HTML Mastery",
+            "html_desc": "50 comprehensive lessons from basics to advanced",
+            "css_wizardry": "CSS Wizardry",
+            "css_desc": "Transform designs into stunning reality",
+            "js_alchemy": "JavaScript Alchemy",
+            "js_desc": "Bring interactivity and dynamic features",
+            "email_signup": "Email Signup",
+            "email_desc": "Get daily learning tips and updates",
+            "available": "AVAILABLE",
+            "coming": "Coming Soon",
+            "subscribe": "Subscribe",
+            "clone": "Clone",
+            "run_code": "Run Code",
+            "back_to_dashboard": "Dashboard"
+        },
+        hindi: {
+            "lesson": "पाठ",
+            "of": "का",
+            "read": "पढ़ें",
+            "previous": "पिछला",
+            "next": "अगला",
+            "dashboard": "डैशबोर्ड",
+            "exit": "बाहर निकलें",
+            "learn": "सीखें",
+            "compiler": "कंपाइलर",
+            "clones": "क्लोन",
+            "certificates": "प्रमाण पत्र",
+            "learning_hub": "लर्निंग हब",
+            "complete_courses": "कोर्स पूरे करें और प्रमाण पत्र प्राप्त करें",
+            "live_compiler": "लाइव कंपाइलर",
+            "write_preview": "HTML, CSS, JS लिखें और प्रीव्यू देखें",
+            "premium_clones": "प्रीमियम क्लोन",
+            "professional_clones": "प्रोफेशनल वेबसाइट क्लोन",
+            "my_certificates": "मेरे प्रमाण पत्र",
+            "your_achievements": "आपकी उपलब्धियां",
+            "no_certificates": "अभी कोई प्रमाण पत्र नहीं",
+            "complete_html": "प्रमाण पत्र पाने के लिए HTML मास्टरी कोर्स (50 पाठ) पूरा करें!",
+            "start_course": "HTML कोर्स शुरू करें",
+            "html_mastery": "एचटीएमएल मास्टरी",
+            "html_desc": "बेसिक से एडवांस तक 50 व्यापक पाठ",
+            "css_wizardry": "सीएसएस विजार्ड्री",
+            "css_desc": "डिज़ाइन को शानदार वास्तविकता में बदलें",
+            "js_alchemy": "जावास्क्रिप्ट अल्केमी",
+            "js_desc": "इंटरैक्टिविटी और डायनामिक फीचर्स लाएं",
+            "email_signup": "ईमेल साइनअप",
+            "email_desc": "दैनिक लर्निंग टिप्स और अपडेट पाएं",
+            "available": "उपलब्ध",
+            "coming": "जल्द आ रहा है",
+            "subscribe": "सब्सक्राइब करें",
+            "clone": "क्लोन",
+            "run_code": "कोड चलाएं",
+            "back_to_dashboard": "डैशबोर्ड पर वापस"
+        },
+        hinglish: {
+            "lesson": "Lesson",
+            "of": "ka",
+            "read": "padho",
+            "previous": "Pichla",
+            "next": "Agla",
+            "dashboard": "Dashboard",
+            "exit": "Bahir niklo",
+            "learn": "Sikho",
+            "compiler": "Compiler",
+            "clones": "Clones",
+            "certificates": "Certificates",
+            "learning_hub": "Learning Hub",
+            "complete_courses": "Courses complete karo aur certificates kamao",
+            "live_compiler": "Live Compiler",
+            "write_preview": "HTML, CSS, JS likho aur preview dekho",
+            "premium_clones": "Premium Clones",
+            "professional_clones": "Professional website clones",
+            "my_certificates": "Mere Certificates",
+            "your_achievements": "Tumhari achievements",
+            "no_certificates": "Abhi koi certificate nahi hai",
+            "complete_html": "Certificate paane ke liye HTML Mastery Course (50 lessons) complete karo!",
+            "start_course": "HTML Course shuru karo",
+            "html_mastery": "HTML Mastery",
+            "html_desc": "Basics se advanced tak 50 lessons",
+            "css_wizardry": "CSS Wizardry",
+            "css_desc": "Design ko stunning reality mein badlo",
+            "js_alchemy": "JavaScript Alchemy",
+            "js_desc": "Interactivity aur dynamic features lao",
+            "email_signup": "Email Signup",
+            "email_desc": "Daily learning tips aur updates pao",
+            "available": "AVAILABLE",
+            "coming": "Jald aa raha hai",
+            "subscribe": "Subscribe karo",
+            "clone": "Clone",
+            "run_code": "Code chalao",
+            "back_to_dashboard": "Dashboard pe wapas"
+        },
+        japanese: {
+            "lesson": "レッスン",
+            "of": "/",
+            "read": "読む",
+            "previous": "前へ",
+            "next": "次へ",
+            "dashboard": "ダッシュボード",
+            "exit": "終了",
+            "learn": "学ぶ",
+            "compiler": "コンパイラ",
+            "clones": "クローン",
+            "certificates": "証明書",
+            "learning_hub": "ラーニングハブ",
+            "complete_courses": "コースを完了して証明書を取得",
+            "live_compiler": "ライブコンパイラ",
+            "write_preview": "HTML、CSS、JSを書いてプレビュー",
+            "premium_clones": "プレミアムクローン",
+            "professional_clones": "プロフェッショナルなウェブサイトクローン",
+            "my_certificates": "私の証明書",
+            "your_achievements": "あなたの実績",
+            "no_certificates": "まだ証明書はありません",
+            "complete_html": "証明書を取得するにはHTMLマスタリーコース（50レッスン）を完了してください！",
+            "start_course": "HTMLコースを開始",
+            "html_mastery": "HTMLマスタリー",
+            "html_desc": "基礎から高度まで50の包括的なレッスン",
+            "css_wizardry": "CSSウィザードリー",
+            "css_desc": "デザインを見事な現実に変える",
+            "js_alchemy": "JavaScriptアルケミー",
+            "js_desc": "インタラクティビティと動的機能をもたらす",
+            "email_signup": "メール登録",
+            "email_desc": "毎日の学習のヒントと更新情報を入手",
+            "available": "利用可能",
+            "coming": "近日公開",
+            "subscribe": "購読する",
+            "clone": "クローン",
+            "run_code": "コードを実行",
+            "back_to_dashboard": "ダッシュボードに戻る"
+        },
+        korean: {
+            "lesson": "레슨",
+            "of": "/",
+            "read": "읽기",
+            "previous": "이전",
+            "next": "다음",
+            "dashboard": "대시보드",
+            "exit": "종료",
+            "learn": "배우기",
+            "compiler": "컴파일러",
+            "clones": "클론",
+            "certificates": "인증서",
+            "learning_hub": "러닝 허브",
+            "complete_courses": "코스 완료하고 인증서 받기",
+            "live_compiler": "라이브 컴파일러",
+            "write_preview": "HTML, CSS, JS 작성 및 미리보기",
+            "premium_clones": "프리미엄 클론",
+            "professional_clones": "전문 웹사이트 클론",
+            "my_certificates": "내 인증서",
+            "your_achievements": "당신의 업적",
+            "no_certificates": "아직 인증서가 없습니다",
+            "complete_html": "인증서를 받으려면 HTML 마스터리 코스(50 레슨)를 완료하세요!",
+            "start_course": "HTML 코스 시작",
+            "html_mastery": "HTML 마스터리",
+            "html_desc": "기초부터 고급까지 50개의 포괄적인 레슨",
+            "css_wizardry": "CSS 위저드리",
+            "css_desc": "디자인을 놀라운 현실로 변환",
+            "js_alchemy": "JavaScript 연금술",
+            "js_desc": "인터랙티브 및 동적 기능 제공",
+            "email_signup": "이메일 가입",
+            "email_desc": "매일 학습 팁과 업데이트 받기",
+            "available": "사용 가능",
+            "coming": "출시 예정",
+            "subscribe": "구독하기",
+            "clone": "클론",
+            "run_code": "코드 실행",
+            "back_to_dashboard": "대시보드로 돌아가기"
+        },
+        funny: {
+            "lesson": "CHOTU LESSON (Baby step)",
+            "of": "out of",
+            "read": "read it like a boss",
+            "previous": "Go back (No regrets!)",
+            "next": "Next (Let's goooo!)",
+            "dashboard": "Main Menu (Don't get lost)",
+            "exit": "Bye Bye (Come back soon!)",
+            "learn": "LEARN (Brain expand time)",
+            "compiler": "MAGIC BOX (Code go brrr)",
+            "clones": "COPYCAT (But legal)",
+            "certificates": "PROOF THAT YOU'RE COOL",
+            "learning_hub": "The Brain Gym",
+            "complete_courses": "Finish stuff, get shiny papers",
+            "live_compiler": "Code Goes Boom! (In a good way)",
+            "write_preview": "Write nonsense, see magic happen",
+            "premium_clones": "Fancy Copy-Paste (Shh... we call it clone)",
+            "professional_clones": "Big websites made small",
+            "my_certificates": "My Trophy Room",
+            "your_achievements": "Stuff you actually did (Wow!)",
+            "no_certificates": "You got ZERO certificates! (SADGE)",
+            "complete_html": "Complete HTML course (50 lessons) and get a shiny PDF! Do it NOW!",
+            "start_course": "START BEFORE YOUR CHAI GETS COLD!",
+            "html_mastery": "HTML MASTERY (The Spider-Man of coding)",
+            "html_desc": "50 lessons from 'What is tag?' to 'I OWN THE WEB'",
+            "css_wizardry": "CSS WIZARDRY (Abra ka dabra, colorful)",
+            "css_desc": "Make ugly HTML look like a supermodel",
+            "js_alchemy": "JAVASCRIPT ALCHEMY (Turning coffee into code)",
+            "js_desc": "Make buttons that actually do something!",
+            "email_signup": "📧 SPAM ME WITH KNOWLEDGE",
+            "email_desc": "Get daily tips (I promise no cat videos... okay maybe one)",
+            "available": "🔥 AVAILABLE (Stop scrolling, start clicking) 🔥",
+            "coming": "👀 COMING SOON (Get excited!) 👀",
+            "subscribe": "SUBSCRIBE (Do it, you coward)",
+            "clone": "CLONE (Steal like an artist)",
+            "run_code": "🏃‍♂️ RUN CODE (Make it alive!) 🏃‍♂️",
+            "back_to_dashboard": "🔙 BACK (Return to the mothership)"
+        }
+    };
+    
+    // Funny lesson content generator - English but hilarious
+    function getFunnyLessonContent(originalHtml, lessonNum) {
+        const funnyTexts = [
+            "🤪 HELLO THERE, FUTURE CODER! 🤪",
+            "🎉 TIME TO GET YOUR BRAIN CELLS DANCING! 🎉",
+            "🤣 HTML = How To Make Laughs! (Not really, but imagine!)",
+            "🍕 Code is like pizza - even when it's bad, it's still kinda good!",
+            "🐱‍💻 Every time you write HTML, a kitten gets its wings (probably)",
+            "💀 BRO, YOU'RE LEARNING! That's more than 99% of people do today!",
+            "🎯 PRO TIP: Don't panic! Even senior devs Google 'how to center a div'",
+            "🤡 Remember: Bugs are just features that haven't been documented yet!",
+            "⚡ WARNING: Learning HTML may cause sudden urges to build websites",
+            "🍿 Grab popcorn, you're about to become a web wizard!"
+        ];
+        const randomFunny = funnyTexts[Math.floor(Math.random() * funnyTexts.length)];
+        
+        // Keep original structure but add funny elements
+        let funnyContent = originalHtml;
+        // Replace boring text with funny versions
+        funnyContent = funnyContent.replace(/Pro Tip:/g, "🤯 PRO TIP FROM THE CODING GODS 🤯");
+        funnyContent = funnyContent.replace(/Important/g, "⚠️ SUPER DUPER IMPORTANT ⚠️");
+        funnyContent = funnyContent.replace(/Note:/g, "📝 NOTE TO YOUR FUTURE SELF 📝");
+        funnyContent = funnyContent.replace(/Example:/g, "🎪 EXAMPLE THAT WILL BLOW YOUR MIND 🎪");
+        
+        // Add funny message at top
+        return `<div class="success-box" style="background: linear-gradient(135deg, #f59e0b20, #ef444420); margin-bottom: 20px; text-align: center;">
+            <strong>😂 ${randomFunny} 😂</strong>
+        </div>
+        <div class="warning-box" style="margin-bottom: 20px;">
+            <strong>🎭 FUNNY MODE ACTIVATED! 🎭</strong><br>
+            Learning but make it hilarious. You're welcome! 🤪
+        </div>
+        ${funnyContent}
+        <div class="tip-box" style="margin-top: 20px;">
+            <strong>💩 RANDOM JOKE TIME 💩</strong><br>
+            Why do programmers prefer dark mode? Because light attracts bugs! 🐛😂
+        </div>`;
+    }
+    
+    // Translation function for UI elements
+    function translate(key, lang = currentLanguage) {
+        if(translations[lang] && translations[lang][key]) {
+            return translations[lang][key];
+        }
+        return translations['english'][key] || key;
+    }
+    
+    function changeLanguage(lang) {
+        currentLanguage = lang;
+        localStorage.setItem('preferred_language', lang);
+        // Re-render current view
+        if(currentPage === 'dashboard' && isLoggedIn) {
+            if(currentView === 'lesson') {
+                renderLessonContent();
+            } else {
+                render();
+            }
+        } else {
+            render();
+        }
+    }
+    
+    function renderLessonContent() {
+        const lesson = htmlLessons[currentLessonPage-1];
+        let contentHtml = lesson.content;
+        
+        // Apply funny mode if selected
+        if(currentLanguage === 'funny') {
+            contentHtml = getFunnyLessonContent(lesson.content, currentLessonPage);
+        }
+        
+        const percent = (currentLessonPage/50)*100;
+        const lessonText = translate('lesson') + ` ${currentLessonPage} ` + translate('of') + ` 50`;
+        const timeText = lesson.time + ' ' + translate('read');
+        
+        const root = document.getElementById('root');
+        root.innerHTML = `<div class="dashboard"><nav class="navbar"><div class="logo"><div class="logo-icon"><i class="fas fa-cube"></i></div><span class="logo-text">CLONEGPT</span></div><button class="logout-button" onclick="logout()"><i class="fas fa-sign-out-alt"></i> ${translate('exit')}</button></nav><div class="lesson-container"><button class="back-to-dashboard" onclick="backToDashboard()"><i class="fas fa-arrow-left"></i> ${translate('back_to_dashboard')}</button><div class="lesson-header"><div class="lesson-meta"><div class="lesson-progress"><i class="fas fa-graduation-cap"></i> ${lessonText}</div><div class="lesson-time"><i class="far fa-clock"></i> ${timeText}</div></div><div class="progress-bar"><div class="progress-fill" style="width:${percent}%"></div></div></div><div class="lesson-content"><div class="lesson-text">${contentHtml}</div></div><div class="lesson-navigation"><button class="nav-btn" onclick="prevLesson()" ${currentLessonPage===1?'disabled':''}><i class="fas fa-chevron-left"></i> ${translate('previous')}</button><button class="nav-btn primary" onclick="nextLesson()" ${currentLessonPage===50?'disabled':''}>${translate('next')} <i class="fas fa-chevron-right"></i></button></div></div></div>`;
+    }
+    
+    // Set the language selector to saved value
+    document.getElementById('languageSelect') && (document.getElementById('languageSelect').value = currentLanguage);
+    
+    // ========== REST OF THE APPLICATION (Same as before with translated UI) ==========
     let certificates = JSON.parse(localStorage.getItem('clonegpt_certificates')) || [];
-    let currentViewingCertificate = null;
     let certificateTabVisible = false;
-
+    let currentPage = 'start';
+    let isLoggedIn = false;
+    let activeModule = 'learn';
+    let currentView = 'dashboard';
+    let currentModalCode = '';
+    let currentLessonPage = 1;
+    
+    // 50 Detailed Lessons
+    const htmlLessons = Array(50).fill(null).map((_, i) => {
+        if(i === 0) return { time: "8 min", content: `<h2>📖 Lesson 1: HTML Kya Hai? (Introduction)</h2><p>HTML ka full form hai <strong>HyperText Markup Language</strong>. Yeh ek language hai jo browsers ko batati hai ki webpage pe kya dikhana hai.</p><h3>🌐 Web kaise kaam karta hai?</h3><p>Jab aap koi website open karte ho, toh aapka browser server se ek file maangta hai. Wo file HTML mein hoti hai. Browser us HTML ko padhta hai aur aapko sundar webpage dikhata hai.</p><div class="tip-box"><strong>💡 Pro Tip:</strong> HTML seekhna sab se pehla step hai web development ka!</div><div class="success-box"><strong>✅ Yaad rakho:</strong> HTML koi programming language nahi hai — yeh ek markup language hai.</div>` };
+        if(i === 49) return { time: "15 min", content: `<h2>🎓 Lesson 50: Congratulations!</h2><p>🎉 Mubarak ho! Tumne HTML Mastery Course complete kar liya! Ab tum professional websites bana sakte ho.</p><div class="success-box"><strong>🏆 CERTIFICATE:</strong> Tumhara CLONEGPT HTML Mastery Certificate ab tayaar hai!</div>` };
+        return { time: `${8 + (i%5)} min`, content: `<h2>📖 Lesson ${i+1}: HTML Mastery</h2><p>This is lesson ${i+1}. Keep practicing and you'll become a web development master!</p><div class="tip-box"><strong>💡 Tip:</strong> Practice makes perfect. Code along with every lesson!</div><pre><code>&lt;h1&gt;Learning Lesson ${i+1}&lt;/h1&gt;\n&lt;p&gt;HTML is awesome!&lt;/p&gt;</code></pre><div class="success-box"><strong>✅ Progress:</strong> You're getting closer to your certificate!</div>` };
+    });
+    
+    const learningTopics = [
+        { id: 1, title: "html_mastery", icon: "fa-code", desc: "html_desc", color: "#6366f1", status: "available", isNew: true },
+        { id: 2, title: "css_wizardry", icon: "fa-palette", desc: "css_desc", color: "#d946ef", status: "coming-soon", isNew: false },
+        { id: 3, title: "js_alchemy", icon: "fa-bolt", desc: "js_desc", color: "#f59e0b", status: "coming-soon", isNew: false },
+        { id: 4, title: "email_signup", icon: "fa-envelope", desc: "email_desc", color: "#10b981", status: "available", isNew: true }
+    ];
+    
+    const websiteClones = [
+        { id: 1, name: "X (Twitter)", icon: "fa-brands fa-x-twitter", color: "#ffffff", desc: "Real-time social platform", status: "available" },
+        { id: 2, name: "Instagram Pro", icon: "fa-brands fa-instagram", color: "#E4405F", desc: "Visual storytelling", status: "available" },
+        { id: 3, name: "Spotify Premium", icon: "fa-brands fa-spotify", color: "#1DB954", desc: "Music streaming", status: "available" },
+        { id: 4, name: "YouTube Studio", icon: "fa-brands fa-youtube", color: "#FF0000", desc: "Video platform", status: "available" },
+        { id: 5, name: "Netflix Cinema", icon: "fa-brands fa-netflix", color: "#E50914", desc: "Cinematic experience", status: "available" },
+        { id: 6, name: "Discord Hub", icon: "fa-brands fa-discord", color: "#5865F2", desc: "Community platform", status: "available" }
+    ];
+    
+    function generateCloneCode(clone) {
+        return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${clone.name} Clone</title><style>body{font-family:system-ui;background:linear-gradient(135deg,#6366f1,#8b5cf6,#d946ef);min-height:100vh;display:flex;justify-content:center;align-items:center;margin:0;padding:20px}.card{background:rgba(255,255,255,0.95);border-radius:40px;padding:60px;text-align:center;max-width:500px;box-shadow:0 40px 80px rgba(0,0,0,0.3)}h1{background:linear-gradient(135deg,#6366f1,#8b5cf6);-webkit-background-clip:text;background-clip:text;color:transparent;}button{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:white;border:none;padding:16px 36px;border-radius:50px;cursor:pointer;}</style></head><body><div class="card"><h1>✨ ${clone.name} Clone ✨</h1><p>${clone.desc}</p><button onclick="alert('Welcome to CLONEGPT')">Launch →</button></div></body></html>`;
+    }
+    
     function issueCertificate(courseId, courseName, lessonsCompleted) {
         const studentName = localStorage.getItem('student_name') || 'Elite Developer';
-        
         const alreadyHasCert = certificates.some(c => c.courseId === courseId);
-        
         if (!alreadyHasCert) {
             const certificate = {
                 id: Date.now(),
@@ -260,580 +621,133 @@
         }
         return null;
     }
-
+    
     function showCertificatePopup(certificate) {
         const modal = document.getElementById('certificateViewModal');
         const img = document.getElementById('certificateImage');
-        
-        // Reset image src to ensure it loads
-        img.src = "ChatGPT Image Jun 8, 2026, 02_50_02 AM.png";
-        
-        currentViewingCertificate = certificate;
+        const svgString = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'><rect width='800' height='600' fill='#1a1a2e'/><text x='400' y='150' font-size='36' fill='#ffd700' text-anchor='middle' font-family='monospace'>🎓 CLONEGPT CERTIFICATE 🎓</text><text x='400' y='250' font-size='28' fill='#ffffff' text-anchor='middle'>This is to certify that</text><text x='400' y='320' font-size='34' fill='#a78bfa' text-anchor='middle' font-weight='bold'>${certificate.studentName}</text><text x='400' y='400' font-size='28' fill='#ffffff' text-anchor='middle'>has successfully completed the course</text><text x='400' y='480' font-size='32' fill='#f0abfc' text-anchor='middle' font-weight='bold'>${certificate.courseName}</text><text x='400' y='550' font-size='18' fill='#8a8a9a' text-anchor='middle'>${certificate.completionDate}</text></svg>`;
+        img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svgString);
         modal.classList.add('active');
     }
-
-    function closeCertificateViewModal() {
-        document.getElementById('certificateViewModal').classList.remove('active');
-        currentViewingCertificate = null;
-    }
-
-    function downloadCertificate() {
-        const img = document.getElementById('certificateImage');
-        const canvas = document.createElement('canvas');
-        canvas.width = img.naturalWidth || 800;
-        canvas.height = img.naturalHeight || 600;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        
-        const link = document.createElement('a');
-        link.download = `CloneGPT_Certificate.png`;
-        link.href = canvas.toDataURL();
-        link.click();
-    }
-
-    function printCertificate() {
-        const imgSrc = document.getElementById('certificateImage').src;
-        const printWindow = window.open('', '_blank');
-        printWindow.document.write(`
-            <html>
-            <head>
-                <title>CloneGPT Certificate</title>
-                <style>
-                    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
-                    img { max-width: 100%; height: auto; }
-                    @media print { body { margin: 0; padding: 0; } }
-                </style>
-            </head>
-            <body><img src="${imgSrc}" alt="Certificate"></body>
-            </html>
-        `);
-        printWindow.document.close();
-        printWindow.print();
-    }
-
+    
+    function closeCertificateViewModal() { document.getElementById('certificateViewModal').classList.remove('active'); }
+    function downloadCertificate() { const img = document.getElementById('certificateImage'); const link = document.createElement('a'); link.download = 'CLONEGPT_Certificate.png'; const canvas = document.createElement('canvas'); canvas.width = 800; canvas.height = 600; const ctx = canvas.getContext('2d'); const tempImg = new Image(); tempImg.src = img.src; tempImg.onload = () => { ctx.drawImage(tempImg, 0, 0, 800, 600); link.href = canvas.toDataURL(); link.click(); }; }
+    function printCertificate() { const imgSrc = document.getElementById('certificateImage').src; const win = window.open('', '_blank'); win.document.write(`<html><head><title>Certificate</title><style>body{display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0;padding:20px}img{max-width:100%}</style></head><body><img src="${imgSrc}"></body></html>`); win.document.close(); win.print(); }
+    
     function checkAndIssueHTMLCertificate() {
         const htmlCompleted = localStorage.getItem('html_course_completed') === 'true';
-        const currentLessonPage = parseInt(localStorage.getItem('html_current_lesson')) || 1;
-        
-        if (currentLessonPage === 50 && !htmlCompleted) {
+        const currentLesson = parseInt(localStorage.getItem('html_current_lesson')) || 1;
+        if (currentLesson === 50 && !htmlCompleted) {
             localStorage.setItem('html_course_completed', 'true');
             const certificate = issueCertificate('html_mastery', 'HTML Mastery Course', 50);
-            
             if (certificate) {
                 certificateTabVisible = true;
                 const certTab = document.getElementById('certificatesTab');
                 if (certTab) certTab.classList.remove('hidden-tab');
-                
-                setTimeout(() => {
-                    showCertificatePopup(certificate);
-                }, 500);
-                return true;
+                setTimeout(() => showCertificatePopup(certificate), 500);
             }
         }
-        return false;
     }
-
-    // HTML Lessons Data
-    const htmlLessons = [];
-    const lessonData = [
-        { title: "Introduction to HTML", time: "5 min", content: "Welcome to HTML! HTML (HyperText Markup Language) is the standard language for creating web pages.<br><br><strong>Key Concepts:</strong><ul><li>HTML is a markup language</li><li>HTML documents are plain text files</li><li>HTML tags are not case-sensitive</li></ul><div class='tip-box'><strong>💡 Pro Tip:</strong> Think of HTML as the skeleton of your website!</div>" },
-        { title: "Document Structure", time: "5 min", content: "Every HTML document follows a standard structure:<br><br><pre><code>&lt;!DOCTYPE html&gt;\n&lt;html lang=\"en\"&gt;\n  &lt;head&gt;\n    &lt;meta charset=\"UTF-8\"&gt;\n    &lt;title&gt;Page Title&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;\n    &lt;h1&gt;Hello World!&lt;/h1&gt;\n  &lt;/body&gt;\n&lt;/html&gt;</code></pre>" },
-        { title: "HTML Headings", time: "4 min", content: "Headings create hierarchy in your content:<br><br><pre><code>&lt;h1&gt;Main Heading&lt;/h1&gt;\n&lt;h2&gt;Section Heading&lt;/h2&gt;\n&lt;h3&gt;Subsection&lt;/h3&gt;</code></pre><div class='tip-box'><strong>💡 SEO Tip:</strong> Use only one &lt;h1&gt; per page!</div>" }
-    ];
-
-    for (let i = 1; i <= 50; i++) {
-        let content = '';
-        let time = '5 min';
-        if (i <= 3) {
-            content = `<h2>📚 Lesson ${i}: ${lessonData[i-1].title}</h2><br>${lessonData[i-1].content}`;
-            time = lessonData[i-1].time;
-        } else {
-            const topics = ["Paragraphs", "Links", "Images", "Lists", "Tables", "Forms", "Semantic HTML", "Div & Span", "Classes & IDs", "Iframes", "Audio/Video", "Responsive Design"];
-            const topic = topics[(i - 4) % topics.length];
-            content = `<h2>🚀 Lesson ${i}: ${topic}</h2><br><p>Mastering <strong>${topic}</strong> is essential for professional web development.</p><br><div class='tip-box'><strong>💡 Pro Tip:</strong> Practice makes perfect! Build something with ${topic} today.</div>`;
-        }
-        htmlLessons.push({ content, time });
-    }
-
-    const learningTopics = [
-        { id: 1, title: "HTML Mastery", icon: "fa-code", desc: "50 comprehensive lessons from basics to advanced", color: "#6366f1", status: "available", isNew: true },
-        { id: 2, title: "CSS Wizardry", icon: "fa-palette", desc: "Transform designs into stunning reality", color: "#d946ef", status: "coming-soon", isNew: false },
-        { id: 3, title: "JavaScript Alchemy", icon: "fa-bolt", desc: "Bring interactivity and dynamic features", color: "#f59e0b", status: "coming-soon", isNew: false },
-        { id: 4, title: "📧 Email Signup", icon: "fa-envelope", desc: "Get daily learning tips and updates", color: "#10b981", status: "available", isNew: true }
-    ];
-
-    const websiteClones = [
-        { id: 1, name: "X (Twitter)", icon: "fa-brands fa-x-twitter", color: "#ffffff", desc: "Real-time social platform", status: "available" },
-        { id: 2, name: "Instagram Pro", icon: "fa-brands fa-instagram", color: "#E4405F", desc: "Visual storytelling", status: "available" },
-        { id: 3, name: "Spotify Premium", icon: "fa-brands fa-spotify", color: "#1DB954", desc: "Music streaming", status: "available" },
-        { id: 4, name: "YouTube Studio", icon: "fa-brands fa-youtube", color: "#FF0000", desc: "Video platform", status: "available" },
-        { id: 5, name: "Netflix Cinema", icon: "fa-brands fa-netflix", color: "#E50914", desc: "Cinematic experience", status: "available" },
-        { id: 6, name: "Discord Hub", icon: "fa-brands fa-discord", color: "#5865F2", desc: "Community platform", status: "available" }
-    ];
-
-    let currentPage = 'start';
-    let isLoggedIn = false;
-    let activeModule = 'learn';
-    let currentView = 'dashboard';
-    let currentModalCode = '';
-    let currentLessonPage = 1;
-
-    function checkAutoLogin() {
-        return localStorage.getItem('clonegpt_ultimate_logged_in') === 'true';
-    }
-
-    if (checkAutoLogin()) {
-        isLoggedIn = true;
-        currentPage = 'dashboard';
-        currentLessonPage = parseInt(localStorage.getItem('html_current_lesson')) || 1;
-        if (localStorage.getItem('html_course_completed') === 'true') {
-            certificateTabVisible = true;
-        }
-    }
-
-    function generateCloneCode(clone) {
-        return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${clone.name}</title><style>body{font-family:system-ui;background:linear-gradient(135deg,#6366f1,#8b5cf6,#d946ef);min-height:100vh;display:flex;justify-content:center;align-items:center;margin:0;padding:20px}.card{background:rgba(255,255,255,0.95);backdrop-filter:blur(30px);border-radius:40px;padding:60px;text-align:center;max-width:500px;box-shadow:0 40px 80px rgba(0,0,0,0.3)}h1{background:linear-gradient(135deg,#6366f1,#8b5cf6);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:20px;font-size:2.5rem}p{color:#4a5568;margin-bottom:30px;line-height:1.8}.btn{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:white;border:none;padding:16px 36px;border-radius:50px;cursor:pointer;font-weight:700;transition:all 0.3s}.btn:hover{transform:translateY(-3px)scale(1.05);box-shadow:0 25px 60px rgba(99,102,241,0.6)}</style></head><body><div class="card"><h1>✨ ${clone.name} Clone ✨</h1><p>${clone.desc}</p><button class="btn" onclick="alert('🚀 Welcome to CLONEGPT!')">Launch →</button></div></body></html>`;
-    }
-
-    let autoEmailTriggered = false;
-    function showAutoEmailSignup() {
-        if (!autoEmailTriggered && currentPage === 'dashboard' && isLoggedIn && currentView === 'dashboard' && !localStorage.getItem('clonegpt_email_shown')) {
-            autoEmailTriggered = true;
-            setTimeout(() => {
-                if (currentPage === 'dashboard' && isLoggedIn && currentView === 'dashboard' && !localStorage.getItem('clonegpt_email_shown')) {
-                    currentView = 'email';
-                    render();
-                }
-            }, 1000);
-        }
-    }
-
-    function saveEmailAndSend(event) {
-        event.preventDefault();
-        const email = document.getElementById('userEmail')?.value;
-        if (email && email.includes('@') && email.includes('.')) {
-            localStorage.setItem('clonegpt_email_shown', 'true');
-            alert('✅ Thanks for subscribing! You will receive daily tips.');
-            currentView = 'dashboard';
-            render();
-        } else {
-            alert('⚠️ Please enter a valid email address');
-        }
-    }
-
-    function skipEmailForever() {
-        localStorage.setItem('clonegpt_email_shown', 'true');
-        currentView = 'dashboard';
-        render();
-    }
-
-    function showComingSoon(itemName) {
-        document.getElementById('comingSoonTitle').textContent = `✨ ${itemName} ✨`;
-        document.getElementById('comingSoonItem').textContent = itemName;
-        document.getElementById('comingSoonModal').classList.add('active');
-    }
-
-    function closeComingSoonModal() {
-        document.getElementById('comingSoonModal')?.classList.remove('active');
-    }
-
-    function notifyMe() {
-        alert('🎉 Thanks! You\'ll be notified when this launches! 🚀');
-        closeComingSoonModal();
-    }
-
-    function startHTMLLesson() {
-        currentLessonPage = parseInt(localStorage.getItem('html_current_lesson')) || 1;
-        currentView = 'lesson';
-        render();
-    }
-
-    function nextLesson() {
-        if (currentLessonPage < 50) {
-            currentLessonPage++;
-            localStorage.setItem('html_current_lesson', currentLessonPage);
-            render();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            checkAndIssueHTMLCertificate();
-        }
-    }
-
-    function prevLesson() {
-        if (currentLessonPage > 1) {
-            currentLessonPage--;
-            localStorage.setItem('html_current_lesson', currentLessonPage);
-            render();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    }
-
-    function backToDashboard() {
-        currentView = 'dashboard';
-        render();
-    }
-
-    function showEmailSignup() {
-        if (!localStorage.getItem('clonegpt_email_shown')) {
-            currentView = 'email';
-            render();
-        } else {
-            alert('You have already subscribed! Thank you 🙏');
-        }
-    }
-
+    
+    function startHTMLLesson() { currentLessonPage = parseInt(localStorage.getItem('html_current_lesson')) || 1; currentView = 'lesson'; renderLessonContent(); }
+    function nextLesson() { if (currentLessonPage < 50) { currentLessonPage++; localStorage.setItem('html_current_lesson', currentLessonPage); renderLessonContent(); window.scrollTo({ top: 0, behavior: 'smooth' }); checkAndIssueHTMLCertificate(); } }
+    function prevLesson() { if (currentLessonPage > 1) { currentLessonPage--; localStorage.setItem('html_current_lesson', currentLessonPage); renderLessonContent(); window.scrollTo({ top: 0, behavior: 'smooth' }); } }
+    function backToDashboard() { currentView = 'dashboard'; render(); }
+    function showComingSoon(itemName) { document.getElementById('comingSoonTitle').textContent = `✨ ${translate(itemName.toLowerCase().replace(/ /g,'_'), 'english') || itemName} ✨`; document.getElementById('comingSoonItem').textContent = itemName; document.getElementById('comingSoonModal').classList.add('active'); }
+    function closeComingSoonModal() { document.getElementById('comingSoonModal')?.classList.remove('active'); }
+    function notifyMe() { alert(translate('notify', currentLanguage) || '🎉 Thanks! You will be notified!'); closeComingSoonModal(); }
+    function showEmailSignup() { if (!localStorage.getItem('clonegpt_email_shown')) { currentView = 'email'; render(); } else alert(translate('already_subscribed', currentLanguage) || 'Already subscribed!'); }
+    function saveEmailAndSend(e) { e.preventDefault(); const email = document.getElementById('userEmail')?.value; if(email && email.includes('@')) { localStorage.setItem('clonegpt_email_shown', 'true'); alert(translate('subscribed', currentLanguage) || '✅ Subscribed!'); currentView = 'dashboard'; render(); } else alert(translate('valid_email', currentLanguage) || 'Valid email required'); }
+    function skipEmailForever() { localStorage.setItem('clonegpt_email_shown', 'true'); currentView = 'dashboard'; render(); }
+    function switchModule(module) { activeModule = module; currentView = 'dashboard'; render(); if(module === 'compiler') setTimeout(() => runCompiler(), 100); }
+    function runCompiler() { const html = document.getElementById('htmlCode')?.value || ''; const css = document.getElementById('cssCode')?.value || ''; const js = document.getElementById('jsCode')?.value || ''; const preview = document.getElementById('previewFrame'); if(preview) preview.srcdoc = `<!DOCTYPE html><html><head><style>${css}</style></head><body>${html}<script>${js}<\/script></body></html>`; }
+    function switchCompilerTab(type, btn) { document.querySelectorAll('.compiler-tab').forEach(t => t.classList.remove('active')); if(btn) btn.classList.add('active'); ['Html', 'Css', 'Js'].forEach(t => document.getElementById(`compiler${t}`)?.classList.remove('active')); document.getElementById(`compiler${type.charAt(0).toUpperCase() + type.slice(1)}`)?.classList.add('active'); }
+    function showCloneModal(cloneId) { const clone = websiteClones.find(c => c.id === cloneId); currentModalCode = generateCloneCode(clone); document.getElementById('modalTitle').innerHTML = `<i class="${clone.icon}"></i> ${clone.name}`; document.getElementById('modalCodeBlock').textContent = currentModalCode; document.getElementById('modalPreviewContainer').innerHTML = ''; document.getElementById('globalModal').classList.add('active'); }
+    function runModalPreview() { const iframe = document.createElement('iframe'); iframe.className = 'preview-frame'; iframe.style.width = '100%'; iframe.style.height = '400px'; iframe.srcdoc = currentModalCode; document.getElementById('modalPreviewContainer').innerHTML = ''; document.getElementById('modalPreviewContainer').appendChild(iframe); }
+    function copyModalCode() { navigator.clipboard.writeText(currentModalCode).then(()=>alert('Copied!')).catch(()=>alert('Manual copy')); }
+    function closeModal() { document.getElementById('globalModal')?.classList.remove('active'); }
+    function goToLogin() { currentPage = 'login'; render(); }
+    function handleLogin() { const username = document.getElementById('loginUsername')?.value || 'Elite Developer'; localStorage.setItem('student_name', username); isLoggedIn = true; currentPage = 'dashboard'; currentView = 'dashboard'; activeModule = 'learn'; localStorage.setItem('clonegpt_ultimate_logged_in', 'true'); currentLessonPage = parseInt(localStorage.getItem('html_current_lesson')) || 1; if(localStorage.getItem('html_course_completed') === 'true') certificateTabVisible = true; render(); }
+    function logout() { isLoggedIn = false; currentPage = 'start'; localStorage.removeItem('clonegpt_ultimate_logged_in'); render(); }
+    
     function renderCertificatesTab() {
         certificates = JSON.parse(localStorage.getItem('clonegpt_certificates')) || [];
-        
-        if (certificates.length === 0) {
-            return `
-                <div class="empty-certificates">
-                    <i class="fas fa-certificate"></i>
-                    <h3>No Certificates Yet</h3>
-                    <p>Complete a course to earn your first <strong style="color:#ffd700;">CLONEGPT Certificate</strong>!</p>
-                    <p style="margin-top: 20px;">✨ Complete the <strong>HTML Mastery Course</strong> (50 lessons) to get your certificate ✨</p>
-                    <button class="hero-btn" style="margin-top: 30px; padding: 12px 30px; font-size: 1rem;" onclick="startHTMLLesson()">
-                        <i class="fas fa-code"></i> Start HTML Course
-                    </button>
-                </div>
-            `;
-        } else {
-            let certsHtml = '<div class="certificate-list">';
-            certificates.forEach(cert => {
-                certsHtml += `
-                    <div class="certificate-card-item">
-                        <div class="info">
-                            <h4><i class="fas fa-certificate" style="color: #ffd700;"></i> ${cert.courseName}</h4>
-                            <p><i class="fas fa-user"></i> ${cert.studentName} &nbsp;|&nbsp; <i class="fas fa-calendar"></i> ${cert.completionDate} &nbsp;|&nbsp; <i class="fas fa-check-circle"></i> ${cert.lessonsCompleted} lessons</p>
-                        </div>
-                        <button class="view-cert-btn" onclick="showExistingCertificate(${cert.id})">
-                            <i class="fas fa-eye"></i> View Certificate
-                        </button>
-                    </div>
-                `;
-            });
-            certsHtml += '</div>';
-            return certsHtml;
-        }
+        if(certificates.length === 0) return `<div class="empty-certificates"><i class="fas fa-certificate"></i><h3>${translate('no_certificates')}</h3><p>${translate('complete_html')}</p><button class="hero-btn" style="margin-top:30px;padding:12px 30px;" onclick="startHTMLLesson()"><i class="fas fa-code"></i> ${translate('start_course')}</button></div>`;
+        let html = '<div class="certificate-list">';
+        certificates.forEach(cert => { html += `<div class="certificate-card-item"><div class="info"><h4><i class="fas fa-certificate"></i> ${cert.courseName}</h4><p><i class="fas fa-user"></i> ${cert.studentName} &nbsp;|&nbsp; <i class="fas fa-calendar"></i> ${cert.completionDate}</p></div><button class="view-cert-btn" onclick="showExistingCertificate(${cert.id})"><i class="fas fa-eye"></i> ${translate('view', currentLanguage) || 'View'}</button></div>`; });
+        html += '</div>'; return html;
     }
-
-    function showExistingCertificate(certId) {
-        const cert = certificates.find(c => c.id === certId);
-        if (cert) {
-            showCertificatePopup(cert);
-        }
-    }
-
-    function runCompiler() {
-        const html = document.getElementById('htmlCode')?.value || '';
-        const css = document.getElementById('cssCode')?.value || '';
-        const js = document.getElementById('jsCode')?.value || '';
-        const previewFrame = document.getElementById('previewFrame');
-        if (previewFrame) {
-            previewFrame.srcdoc = `<!DOCTYPE html><html><head><style>${css}</style></head><body>${html}<script>${js}<\/script></body></html>`;
-        }
-    }
-
+    function showExistingCertificate(certId) { const cert = certificates.find(c => c.id === certId); if(cert) showCertificatePopup(cert); }
+    
     function render() {
         const root = document.getElementById('root');
-        
-        if (currentPage === 'start') {
-            autoEmailTriggered = false;
-            root.innerHTML = `
-                <div class="start-page">
-                    <div class="hero-content">
-                        <span class="hero-badge"><i class="fas fa-crown"></i> CLONEGPT ULTIMATE • EARN CERTIFICATES <i class="fas fa-crown"></i></span>
-                        <h1 class="hero-title">Master Web Development<br>with CLONEGPT</h1>
-                        <p class="hero-subtitle">Premium clones • 50 comprehensive lessons • Live compiler<br>Earn official CLONEGPT certificates upon completion!</p>
-                        <div class="stats-row">
-                            <div class="stat"><span class="stat-number">20+</span><span class="stat-label">Premium Clones</span></div>
-                            <div class="stat"><span class="stat-number">50</span><span class="stat-label">HD Lessons</span></div>
-                            <div class="stat"><span class="stat-number">Live</span><span class="stat-label">Compiler</span></div>
-                        </div>
-                        <button class="hero-btn" onclick="goToLogin()">Begin Your Journey <i class="fas fa-arrow-right"></i></button>
-                    </div>
-                </div>
-            `;
-        } else if (currentPage === 'login') {
-            root.innerHTML = `
-                <div class="login-page">
-                    <div class="login-container">
-                        <div class="login-header">
-                            <div class="login-icon"><i class="fas fa-crown"></i></div>
-                            <h2>Welcome to CLONEGPT</h2>
-                            <p>Enter your name for your certificate</p>
-                        </div>
-                        <div class="input-group">
-                            <label class="input-label">Your Name (will appear on certificate)</label>
-                            <div class="input-field">
-                                <i class="fas fa-user"></i>
-                                <input type="text" id="loginUsername" placeholder="Enter your full name" value="Elite Developer">
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <label class="input-label">Password (demo: any)</label>
-                            <div class="input-field">
-                                <i class="fas fa-lock"></i>
-                                <input type="password" id="loginPassword" placeholder="Enter any password" value="clonegpt">
-                            </div>
-                        </div>
-                        <button class="login-submit" onclick="handleLogin()">Enter Dashboard →</button>
-                        <div class="login-footer"><i class="fas fa-certificate"></i> Complete courses to earn CLONEGPT certificates</div>
-                    </div>
-                </div>
-            `;
-        } else if (currentPage === 'dashboard' && isLoggedIn) {
-            if (currentView === 'lesson') {
-                const lesson = htmlLessons[currentLessonPage - 1];
-                const progressPercent = (currentLessonPage / 50) * 100;
-                root.innerHTML = `
-                    <div class="dashboard">
-                        <nav class="navbar">
-                            <div class="logo"><div class="logo-icon"><i class="fas fa-cube"></i></div><span class="logo-text">CLONEGPT Ultimate</span></div>
-                            <button class="logout-button" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Exit</button>
-                        </nav>
-                        <div class="lesson-container">
-                            <button class="back-to-dashboard" onclick="backToDashboard()"><i class="fas fa-arrow-left"></i> Dashboard</button>
-                            <div class="lesson-header">
-                                <div class="lesson-meta">
-                                    <div class="lesson-progress"><i class="fas fa-graduation-cap"></i> Lesson ${currentLessonPage} of 50</div>
-                                    <div class="lesson-time"><i class="far fa-clock"></i> ~${lesson.time} read</div>
-                                </div>
-                                <div class="progress-bar"><div class="progress-fill" style="width: ${progressPercent}%"></div></div>
-                            </div>
-                            <div class="lesson-content"><div class="lesson-text">${lesson.content}</div></div>
-                            <div class="lesson-navigation">
-                                <button class="nav-btn" onclick="prevLesson()" ${currentLessonPage === 1 ? 'disabled' : ''}><i class="fas fa-chevron-left"></i> Previous</button>
-                                <button class="nav-btn primary" onclick="nextLesson()" ${currentLessonPage === 50 ? 'disabled' : ''}>Next <i class="fas fa-chevron-right"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            } else if (currentView === 'email') {
-                if (localStorage.getItem('clonegpt_email_shown')) {
-                    currentView = 'dashboard';
-                    render();
-                    return;
-                }
-                root.innerHTML = `
-                    <div class="dashboard">
-                        <nav class="navbar">
-                            <div class="logo"><div class="logo-icon"><i class="fas fa-cube"></i></div><span class="logo-text">CLONEGPT Ultimate</span></div>
-                            <button class="logout-button" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Exit</button>
-                        </nav>
-                        <div class="email-section">
-                            <div class="email-card">
-                                <div class="email-icon"><i class="fas fa-paper-plane"></i></div>
-                                <h2>Get Daily Learning Tips!</h2>
-                                <p>Enter your email to receive web development tips and exclusive content.</p>
-                                <form onsubmit="saveEmailAndSend(event)">
-                                    <div class="email-input-wrapper">
-                                        <i class="fas fa-envelope"></i>
-                                        <input type="email" id="userEmail" placeholder="your@email.com" required>
-                                    </div>
-                                    <div class="email-action-buttons">
-                                        <button type="submit" class="email-done-btn"><i class="fas fa-check"></i> Subscribe</button>
-                                        <button type="button" class="email-skip-btn" onclick="skipEmailForever()"><i class="fas fa-times"></i> Skip</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            } else {
-                let topicsHtml = '';
-                learningTopics.forEach(topic => {
-                    if (topic.status === 'coming-soon') {
-                        topicsHtml += `<div class="card disabled" onclick="showComingSoon('${topic.title}')"><div class="coming-soon-badge"><i class="fas fa-clock"></i> Coming Soon</div><div class="card-icon"><i class="fas ${topic.icon}" style="color: ${topic.color};"></i></div><div class="card-content"><h3>${topic.title}</h3><p>${topic.desc}</p><span class="card-tag"><i class="fas fa-rocket"></i> Coming Soon</span></div></div>`;
+        if(!root) return;
+        if(currentPage === 'start') {
+            root.innerHTML = `<div class="start-page"><div class="hero-content"><span class="hero-badge"><i class="fas fa-crown"></i> CLONEGPT ULTIMATE</span><h1 class="hero-title">Master Web Development<br>with CLONEGPT</h1><p class="hero-subtitle">Premium clones • 50 lessons • Live compiler • Earn certificates</p><div class="stats-row"><div class="stat"><span class="stat-number">20+</span><span class="stat-label">Clones</span></div><div class="stat"><span class="stat-number">50</span><span class="stat-label">Lessons</span></div><div class="stat"><span class="stat-number">Live</span><span class="stat-label">Compiler</span></div></div><button class="hero-btn" onclick="goToLogin()">Begin Journey <i class="fas fa-arrow-right"></i></button></div></div>`;
+        } 
+        else if(currentPage === 'login') {
+            root.innerHTML = `<div class="login-page"><div class="login-container"><div class="login-icon"><i class="fas fa-crown"></i></div><h2 style="text-align:center;">Welcome to CLONEGPT</h2><p style="text-align:center;">Enter your name for certificate</p><div class="input-group"><label class="input-label">Your Full Name</label><div class="input-field"><i class="fas fa-user"></i><input type="text" id="loginUsername" placeholder="Enter your name" value="Elite Developer"></div></div><button class="login-submit" onclick="handleLogin()">Enter Dashboard →</button></div></div>`;
+        }
+        else if(currentPage === 'dashboard' && isLoggedIn) {
+            if(currentView === 'email') {
+                root.innerHTML = `<div class="dashboard"><nav class="navbar"><div class="logo"><div class="logo-icon"><i class="fas fa-cube"></i></div><span class="logo-text">CLONEGPT</span></div><button class="logout-button" onclick="logout()"><i class="fas fa-sign-out-alt"></i> ${translate('exit')}</button></nav><div class="email-section"><div class="email-card"><div class="email-icon"><i class="fas fa-paper-plane"></i></div><h2>${translate('email_signup')}</h2><p>${translate('email_desc')}</p><form onsubmit="saveEmailAndSend(event)"><div class="email-input-wrapper"><i class="fas fa-envelope"></i><input type="email" id="userEmail" placeholder="your@email.com" required></div><div class="email-action-buttons"><button type="submit" class="email-done-btn"><i class="fas fa-check"></i> ${translate('subscribe')}</button><button type="button" class="email-skip-btn" onclick="skipEmailForever()">Skip</button></div></form></div></div></div>`;
+            } else if(currentView !== 'lesson') {
+                const topicsHtml = learningTopics.map(t => {
+                    const titleKey = t.title;
+                    const descKey = t.desc;
+                    const title = translate(titleKey);
+                    const desc = translate(descKey);
+                    if(t.status === 'coming-soon') {
+                        return `<div class="card disabled" onclick="showComingSoon('${title}')"><div class="coming-soon-badge">${translate('coming')}</div><div class="card-icon"><i class="fas ${t.icon}" style="color:${t.color}"></i></div><div class="card-content"><h3>${title}</h3><p>${desc}</p><span class="card-tag">🔜 ${translate('coming')}</span></div></div>`;
+                    } else if(t.id === 4) {
+                        return `<div class="card" onclick="showEmailSignup()"><div class="new-badge">NEW</div><div class="card-icon"><i class="fas ${t.icon}" style="color:${t.color}"></i></div><div class="card-content"><h3>${title}</h3><p>${desc}</p><span class="card-tag">📧 ${translate('subscribe')}</span></div></div>`;
                     } else {
-                        if (topic.id === 4) {
-                            topicsHtml += `<div class="card" onclick="showEmailSignup()">${topic.isNew ? '<div class="new-badge"><i class="fas fa-star"></i> NEW</div>' : ''}<div class="card-icon"><i class="fas ${topic.icon}" style="color: ${topic.color};"></i></div><div class="card-content"><h3>${topic.title}</h3><p>${topic.desc}</p><span class="card-tag"><i class="fas fa-envelope"></i> Subscribe</span></div></div>`;
-                        } else {
-                            topicsHtml += `<div class="card" onclick="startHTMLLesson()">${topic.isNew ? '<div class="new-badge"><i class="fas fa-star"></i> JUST RELEASED</div>' : ''}<div class="card-icon"><i class="fas ${topic.icon}" style="color: ${topic.color};"></i></div><div class="card-content"><h3>${topic.title}</h3><p>${topic.desc}</p><span class="card-tag"><i class="fas fa-check-circle" style="color: #10b981;"></i> 50 Lessons</span></div></div>`;
-                        }
+                        return `<div class="card" onclick="startHTMLLesson()"><div class="new-badge">🔥 ${translate('available')}</div><div class="card-icon"><i class="fas ${t.icon}" style="color:${t.color}"></i></div><div class="card-content"><h3>${title}</h3><p>${desc}</p><span class="card-tag">✅ 50 ${translate('lesson')}</span></div></div>`;
                     }
-                });
-                
-                let clonesHtml = '';
-                websiteClones.forEach(clone => {
-                    clonesHtml += `<div class="card" onclick="showCloneModal(${clone.id})"><div class="card-icon"><i class="${clone.icon}" style="color: ${clone.color};"></i></div><div class="card-content"><h3>${clone.name}</h3><p>${clone.desc}</p><span class="card-tag"><i class="fas fa-bolt"></i> Deploy</span></div></div>`;
-                });
-                
-                const certificatesHtml = renderCertificatesTab();
-                const certTabClass = certificateTabVisible ? '' : 'hidden-tab';
-                
-                root.innerHTML = `
-                    <div class="dashboard">
-                        <nav class="navbar">
-                            <div class="logo"><div class="logo-icon"><i class="fas fa-cube"></i></div><span class="logo-text">CLONEGPT Ultimate</span></div>
-                            <button class="logout-button" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Exit</button>
-                        </nav>
-                        <div class="tabs-wrapper">
-                            <div class="tabs">
-                                <button class="tab ${activeModule === 'learn' ? 'active' : ''}" onclick="switchModule('learn')"><i class="fas fa-graduation-cap"></i> Learn</button>
-                                <button class="tab ${activeModule === 'compiler' ? 'active' : ''}" onclick="switchModule('compiler')"><i class="fas fa-code"></i> Compiler</button>
-                                <button class="tab ${activeModule === 'clones' ? 'active' : ''}" onclick="switchModule('clones')"><i class="fas fa-clone"></i> Clones</button>
-                                <button id="certificatesTab" class="tab certificate-tab ${activeModule === 'certificates' ? 'active' : ''} ${certTabClass}" onclick="switchModule('certificates')"><i class="fas fa-certificate"></i> Certificates 🎓</button>
-                            </div>
-                        </div>
-                        <div class="content-area">
-                            <div id="learnSection" style="display: ${activeModule === 'learn' ? 'block' : 'none'}">
-                                <div class="section-header"><h2><i class="fas fa-graduation-cap"></i> Learning Hub</h2><p>Complete courses and earn CLONEGPT certificates</p></div>
-                                <div class="cards-grid">${topicsHtml}</div>
-                            </div>
-                            <div id="compilerSection" style="display: ${activeModule === 'compiler' ? 'block' : 'none'}">
-                                <div class="section-header"><h2><i class="fas fa-code"></i> Live Compiler</h2><p>Write • Preview • Perfect</p></div>
-                                <div class="compiler-container">
-                                    <div class="compiler-tabs">
-                                        <button class="compiler-tab active" onclick="switchCompilerTab('html', this)">HTML</button>
-                                        <button class="compiler-tab" onclick="switchCompilerTab('css', this)">CSS</button>
-                                        <button class="compiler-tab" onclick="switchCompilerTab('js', this)">JavaScript</button>
-                                    </div>
-                                    <div id="compilerHtml" class="compiler-panel active"><textarea id="htmlCode" class="code-textarea" placeholder="Write HTML here..."><div style="text-align:center;padding:50px;"><h1>✨ CLONEGPT Ultimate ✨</h1><p>Build something amazing!</p><button id="demoBtn">Click Me</button></div></textarea></div>
-                                    <div id="compilerCss" class="compiler-panel"><textarea id="cssCode" class="code-textarea" placeholder="Write CSS here...">body{font-family:system-ui;background:linear-gradient(135deg,#6366f1,#8b5cf6);min-height:100vh;display:flex;justify-content:center;align-items:center;margin:0}div{background:white;border-radius:30px;padding:40px;text-align:center}button{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:white;border:none;padding:12px 28px;border-radius:50px;cursor:pointer;margin-top:20px}</textarea></div>
-                                    <div id="compilerJs" class="compiler-panel"><textarea id="jsCode" class="code-textarea" placeholder="Write JavaScript here...">document.getElementById('demoBtn').onclick=function(){alert('🚀 Welcome to CLONEGPT!')};</textarea></div>
-                                    <button class="run-button" onclick="runCompiler()"><i class="fas fa-play"></i> Run Code</button>
-                                    <iframe id="previewFrame" class="preview-frame"></iframe>
-                                </div>
-                            </div>
-                            <div id="clonesSection" style="display: ${activeModule === 'clones' ? 'block' : 'none'}">
-                                <div class="section-header"><h2><i class="fas fa-crown"></i> Premium Clones</h2><p>Professional-grade website clones</p></div>
-                                <div class="cards-grid">${clonesHtml}</div>
-                            </div>
-                            <div id="certificatesSection" style="display: ${activeModule === 'certificates' ? 'block' : 'none'}">
-                                <div class="section-header"><h2><i class="fas fa-certificate"></i> My Certificates</h2><p>Your CLONEGPT achievements</p></div>
-                                ${certificatesHtml}
-                            </div>
-                        </div>
-                    </div>
-                    <div id="globalModal" class="modal">
-                        <div class="modal-window">
-                            <div class="modal-header"><h3 id="modalTitle"></h3><button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button></div>
-                            <div class="modal-body">
-                                <div class="modal-actions">
-                                    <button class="modal-btn modal-btn-run" onclick="runModalPreview()"><i class="fas fa-play"></i> Preview</button>
-                                    <button class="modal-btn modal-btn-copy" onclick="copyModalCode()"><i class="fas fa-copy"></i> Copy Code</button>
-                                </div>
-                                <pre id="modalCodeBlock" class="code-block"></pre>
-                                <div id="modalPreviewContainer" class="preview-block"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="comingSoonModal" class="modal coming-soon-modal">
-                        <div class="modal-window">
-                            <div class="modal-header"><h3><i class="fas fa-rocket"></i> Coming Soon</h3><button class="modal-close" onclick="closeComingSoonModal()"><i class="fas fa-times"></i></button></div>
-                            <div class="modal-body" style="text-align: center;">
-                                <div class="coming-soon-icon">🚀</div>
-                                <h2 class="coming-soon-title" id="comingSoonTitle"></h2>
-                                <p class="coming-soon-text"><strong id="comingSoonItem"></strong> is under development</p>
-                                <div class="coming-soon-progress"><div class="coming-soon-progress-bar"></div></div>
-                                <button class="notify-btn" onclick="notifyMe()"><i class="fas fa-bell"></i> Get Notified</button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                setTimeout(() => { 
-                    if (activeModule === 'compiler') runCompiler(); 
-                }, 100);
-                showAutoEmailSignup();
+                }).join('');
+                const clonesHtml = websiteClones.map(c => `<div class="card" onclick="showCloneModal(${c.id})"><div class="card-icon"><i class="${c.icon}" style="color:${c.color}"></i></div><div class="card-content"><h3>${c.name}</h3><p>${c.desc}</p><span class="card-tag">🚀 ${translate('clone')}</span></div></div>`).join('');
+                const certsHtml = renderCertificatesTab();
+                const certTabHidden = certificateTabVisible ? '' : 'hidden-tab';
+                root.innerHTML = `<div class="dashboard"><nav class="navbar"><div class="logo"><div class="logo-icon"><i class="fas fa-cube"></i></div><span class="logo-text">CLONEGPT ULTIMATE</span></div><button class="logout-button" onclick="logout()"><i class="fas fa-sign-out-alt"></i> ${translate('exit')}</button></nav><div class="tabs-wrapper"><div class="tabs"><button class="tab ${activeModule==='learn'?'active':''}" onclick="switchModule('learn')"><i class="fas fa-graduation-cap"></i> ${translate('learn')}</button><button class="tab ${activeModule==='compiler'?'active':''}" onclick="switchModule('compiler')"><i class="fas fa-code"></i> ${translate('compiler')}</button><button class="tab ${activeModule==='clones'?'active':''}" onclick="switchModule('clones')"><i class="fas fa-clone"></i> ${translate('clones')}</button><button id="certificatesTab" class="tab certificate-tab ${activeModule==='certificates'?'active':''} ${certTabHidden}" onclick="switchModule('certificates')"><i class="fas fa-certificate"></i> ${translate('certificates')} 🎓</button></div></div><div class="content-area"><div id="learnSection" style="display:${activeModule==='learn'?'block':'none'}"><div class="section-header"><h2>📘 ${translate('learning_hub')}</h2><p>${translate('complete_courses')}</p></div><div class="cards-grid">${topicsHtml}</div></div><div id="compilerSection" style="display:${activeModule==='compiler'?'block':'none'}"><div class="section-header"><h2>⚡ ${translate('live_compiler')}</h2><p>${translate('write_preview')}</p></div><div class="compiler-container"><div class="compiler-tabs"><button class="compiler-tab active" onclick="switchCompilerTab('html', this)">HTML</button><button class="compiler-tab" onclick="switchCompilerTab('css', this)">CSS</button><button class="compiler-tab" onclick="switchCompilerTab('js', this)">JS</button></div><div id="compilerHtml" class="compiler-panel active"><textarea id="htmlCode" class="code-textarea"><div style="padding:40px;text-align:center"><h1>Hello CLONEGPT</h1><button id="clickBtn">Click Me</button></div></textarea></div><div id="compilerCss" class="compiler-panel"><textarea id="cssCode" class="code-textarea">body{font-family:sans-serif;background:#f0f0f0;} button{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:white;border:none;padding:12px 24px;border-radius:40px;cursor:pointer;}</textarea></div><div id="compilerJs" class="compiler-panel"><textarea id="jsCode" class="code-textarea">document.getElementById('clickBtn')?.addEventListener('click',()=>alert('🚀 Live Preview Working!'))</textarea></div><button class="run-button" onclick="runCompiler()"><i class="fas fa-play"></i> ${translate('run_code')}</button><iframe id="previewFrame" class="preview-frame"></iframe></div></div><div id="clonesSection" style="display:${activeModule==='clones'?'block':'none'}"><div class="section-header"><h2>🎨 ${translate('premium_clones')}</h2><p>${translate('professional_clones')}</p></div><div class="cards-grid">${clonesHtml}</div></div><div id="certificatesSection" style="display:${activeModule==='certificates'?'block':'none'}"><div class="section-header"><h2>🏆 ${translate('my_certificates')}</h2><p>${translate('your_achievements')}</p></div>${certsHtml}</div></div></div>`;
+                setTimeout(() => { if(activeModule === 'compiler') runCompiler(); }, 100);
             }
         }
     }
-
-    // Global functions
-    window.goToLogin = () => { currentPage = 'login'; render(); };
     
-    window.handleLogin = () => { 
-        const username = document.getElementById('loginUsername')?.value || 'Elite Developer';
-        localStorage.setItem('student_name', username);
-        isLoggedIn = true; 
-        currentPage = 'dashboard'; 
-        currentView = 'dashboard'; 
-        activeModule = 'learn'; 
-        autoEmailTriggered = false;
-        currentLessonPage = parseInt(localStorage.getItem('html_current_lesson')) || 1;
-        localStorage.setItem('clonegpt_ultimate_logged_in', 'true'); 
-        
-        if (localStorage.getItem('html_course_completed') === 'true') {
-            certificateTabVisible = true;
-        }
-        
-        render(); 
-    };
-    
-    window.logout = () => { 
-        isLoggedIn = false; 
-        currentPage = 'start'; 
-        autoEmailTriggered = false;
-        localStorage.removeItem('clonegpt_ultimate_logged_in'); 
-        render(); 
-    };
-    
-    window.switchModule = (module) => { 
-        activeModule = module; 
-        currentView = 'dashboard'; 
-        render();
-        if (module === 'compiler') setTimeout(() => runCompiler(), 100);
-    };
-    
-    window.switchCompilerTab = (type, btn) => {
-        document.querySelectorAll('.compiler-tab').forEach(t => t.classList.remove('active'));
-        if (btn) btn.classList.add('active');
-        ['Html', 'Css', 'Js'].forEach(t => document.getElementById(`compiler${t}`)?.classList.remove('active'));
-        document.getElementById(`compiler${type.charAt(0).toUpperCase() + type.slice(1)}`)?.classList.add('active');
-    };
-    
-    window.runCompiler = runCompiler;
-    
-    window.showCloneModal = (cloneId) => {
-        const clone = websiteClones.find(c => c.id === cloneId);
-        currentModalCode = generateCloneCode(clone);
-        document.getElementById('modalTitle').innerHTML = `<i class="${clone.icon}"></i> ${clone.name}`;
-        document.getElementById('modalCodeBlock').textContent = currentModalCode;
-        document.getElementById('modalPreviewContainer').innerHTML = '';
-        document.getElementById('globalModal').classList.add('active');
-    };
-    
-    window.runModalPreview = () => {
-        const iframe = document.createElement('iframe');
-        iframe.className = 'preview-iframe';
-        iframe.srcdoc = currentModalCode;
-        const container = document.getElementById('modalPreviewContainer');
-        container.innerHTML = '';
-        container.appendChild(iframe);
-    };
-    
-    window.copyModalCode = async () => {
-        try { await navigator.clipboard.writeText(currentModalCode); alert('✅ Code copied!'); }
-        catch { alert('📋 Copy manually'); }
-    };
-    
-    window.closeModal = () => document.getElementById('globalModal')?.classList.remove('active');
-    window.saveEmailAndSend = saveEmailAndSend;
-    window.skipEmailForever = skipEmailForever;
-    window.showEmailSignup = showEmailSignup;
-    window.startHTMLLesson = startHTMLLesson;
-    window.nextLesson = nextLesson;
-    window.prevLesson = prevLesson;
-    window.backToDashboard = backToDashboard;
-    window.showExistingCertificate = showExistingCertificate;
-    window.downloadCertificate = downloadCertificate;
-    window.printCertificate = printCertificate;
+    // Expose functions globally
+    window.goToLogin = goToLogin; window.handleLogin = handleLogin; window.logout = logout; window.switchModule = switchModule;
+    window.switchCompilerTab = switchCompilerTab; window.runCompiler = runCompiler; window.showCloneModal = showCloneModal;
+    window.runModalPreview = runModalPreview; window.copyModalCode = copyModalCode; window.closeModal = closeModal;
+    window.startHTMLLesson = startHTMLLesson; window.nextLesson = nextLesson; window.prevLesson = prevLesson; window.backToDashboard = backToDashboard;
+    window.showEmailSignup = showEmailSignup; window.saveEmailAndSend = saveEmailAndSend; window.skipEmailForever = skipEmailForever;
+    window.showComingSoon = showComingSoon; window.closeComingSoonModal = closeComingSoonModal; window.notifyMe = notifyMe;
+    window.showExistingCertificate = showExistingCertificate; window.downloadCertificate = downloadCertificate; window.printCertificate = printCertificate;
     window.closeCertificateViewModal = closeCertificateViewModal;
-    window.showComingSoon = showComingSoon;
-    window.closeComingSoonModal = closeComingSoonModal;
-    window.notifyMe = notifyMe;
-
-    // Initial check
-    if (checkAutoLogin()) {
-        const savedLesson = localStorage.getItem('html_current_lesson');
-        if (savedLesson) currentLessonPage = parseInt(savedLesson);
-        if (localStorage.getItem('html_course_completed') === 'true') {
-            certificateTabVisible = true;
-        }
+    window.changeLanguage = changeLanguage;
+    
+    if(localStorage.getItem('clonegpt_ultimate_logged_in') === 'true') {
+        isLoggedIn = true; currentPage = 'dashboard'; currentLessonPage = parseInt(localStorage.getItem('html_current_lesson')) || 1;
+        if(localStorage.getItem('html_course_completed') === 'true') certificateTabVisible = true;
         checkAndIssueHTMLCertificate();
     }
-
     render();
 </script>
+
+<!-- Modals -->
+<div id="certificateViewModal" class="modal">
+    <div class="modal-window">
+        <div class="modal-header"><h3><i class="fas fa-certificate"></i> 🎓 Your Certificate</h3><button class="modal-close" onclick="closeCertificateViewModal()"><i class="fas fa-times"></i></button></div>
+        <div class="modal-body"><img id="certificateImage" class="certificate-img" src=""><div class="modal-actions"><button class="modal-btn modal-btn-download" onclick="downloadCertificate()"><i class="fas fa-download"></i> Download</button><button class="modal-btn modal-btn-print" onclick="printCertificate()"><i class="fas fa-print"></i> Print</button></div></div>
+    </div>
+</div>
+<div id="globalModal" class="modal">
+    <div class="modal-window">
+        <div class="modal-header"><h3 id="modalTitle"></h3><button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button></div>
+        <div class="modal-body"><div class="modal-actions"><button class="modal-btn modal-btn-download" onclick="runModalPreview()"><i class="fas fa-play"></i> Preview</button><button class="modal-btn modal-btn-print" onclick="copyModalCode()"><i class="fas fa-copy"></i> Copy Code</button></div><pre id="modalCodeBlock" class="code-block" style="background:#0a0a0f;padding:1rem;border-radius:1rem;overflow-x:auto;"></pre><div id="modalPreviewContainer"></div></div>
+    </div>
+</div>
+<div id="comingSoonModal" class="modal coming-soon-modal">
+    <div class="modal-window"><div class="modal-header"><h3><i class="fas fa-rocket"></i> Coming Soon</h3><button class="modal-close" onclick="closeComingSoonModal()"><i class="fas fa-times"></i></button></div><div class="modal-body" style="text-align:center;"><div class="coming-soon-icon">🚀</div><h2 class="coming-soon-title" id="comingSoonTitle"></h2><p class="coming-soon-text"><strong id="comingSoonItem"></strong> is under development</p><div class="coming-soon-progress"><div class="coming-soon-progress-bar"></div></div><button class="notify-btn" onclick="notifyMe()"><i class="fas fa-bell"></i> Get Notified</button></div></div>
+</div>
 </body>
 </html>
