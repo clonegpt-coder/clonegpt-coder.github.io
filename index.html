@@ -658,7 +658,7 @@
     function backToDashboard() { currentView = 'dashboard'; render(); }
     function showComingSoon(itemName) { document.getElementById('comingSoonTitle').textContent = `✨ ${translate(itemName.toLowerCase().replace(/ /g,'_'), 'english') || itemName} ✨`; document.getElementById('comingSoonItem').textContent = itemName; document.getElementById('comingSoonModal').classList.add('active'); }
     function closeComingSoonModal() { document.getElementById('comingSoonModal')?.classList.remove('active'); }
-    function notifyMe() { alert(translate('notify', currentLanguage) || '🎉 Thanks! You will be notified!'); closeComingSoonModal(); }
+    function notifyMe() { alert(translate('notify', currentLanguage) || '🎉 Thanks! You will be notified!!!!!!!!!!'); closeComingSoonModal(); }
     function showEmailSignup() { if (!localStorage.getItem('clonegpt_email_shown')) { currentView = 'email'; render(); } else alert(translate('already_subscribed', currentLanguage) || 'Already subscribed!'); }
     function saveEmailAndSend(e) { e.preventDefault(); const email = document.getElementById('userEmail')?.value; if(email && email.includes('@')) { localStorage.setItem('clonegpt_email_shown', 'true'); alert(translate('subscribed', currentLanguage) || '✅ Subscribed!'); currentView = 'dashboard'; render(); } else alert(translate('valid_email', currentLanguage) || 'Valid email required'); }
     function skipEmailForever() { localStorage.setItem('clonegpt_email_shown', 'true'); currentView = 'dashboard'; render(); }
